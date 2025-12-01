@@ -10,7 +10,7 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
-    title: 'AI-Powered Detection',
+    title: 'Intelligent Detection',
     description: 'Advanced machine learning algorithms automatically identify and classify structural steel members from engineering drawings.',
   },
   {
@@ -93,7 +93,7 @@ export default function BeamDetection() {
             <span className="gradient-text">& Material Take-Off</span>
           </h2>
           <p className={`text-lg ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>
-            From drawing upload to complete bill of materials in minutes. Our AI-powered engine handles the complexity so your team can focus on winning bids.
+            From drawing upload to complete bill of materials in minutes. Our intelligent engine handles the complexity so your team can focus on winning bids.
           </p>
         </div>
 
