@@ -116,7 +116,7 @@ export function useParallax(speed: number = 0.5) {
   const elementRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
   const targetOffset = useRef(0);
-  const animationFrame = useRef<number>();
+  const animationFrame = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     // Check for reduced motion
@@ -247,7 +247,7 @@ export function useMouseParallax(intensity: number = 0.02) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const targetPosition = useRef({ x: 0, y: 0 });
   const elementRef = useRef<HTMLDivElement>(null);
-  const animationFrame = useRef<number>();
+  const animationFrame = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     // Check for reduced motion
@@ -306,7 +306,7 @@ export function useTilt(maxTilt: number = 8) {
   const targetTilt = useRef({ x: 0, y: 0 });
   const velocity = useRef({ x: 0, y: 0 });
   const elementRef = useRef<HTMLDivElement>(null);
-  const animationFrame = useRef<number>();
+  const animationFrame = useRef<number | undefined>(undefined);
   const isHovering = useRef(false);
 
   // Spring physics constants
