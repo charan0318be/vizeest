@@ -1711,6 +1711,76 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* ============================================
+   LOGO LOADER ANIMATIONS
+   ============================================ */
+
+@keyframes logoDrawPath {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes logoFillFade {
+  0%, 45% {
+    opacity: 0;
+  }
+  55%, 80% {
+    opacity: 1;
+  }
+  90%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes logoGlowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1.3);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.6);
+  }
+}
+
+.logo-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: logoDrawPath 2.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.logo-path-1 { animation-delay: 0s; }
+.logo-path-2 { animation-delay: 0.15s; }
+.logo-path-3 { animation-delay: 0.3s; }
+.logo-path-4 { animation-delay: 0.35s; }
+.logo-path-5 { animation-delay: 0.5s; }
+
+.logo-fill {
+  opacity: 0;
+  animation: logoFillFade 2.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.logo-glow-pulse {
+  animation: logoGlowPulse 3s ease-in-out infinite;
+}
+
+/* ============================================
    PERFORMANCE OPTIMIZATIONS
    ============================================ */
 

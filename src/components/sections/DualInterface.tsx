@@ -12,20 +12,10 @@ const webFeatures = [
   'Role-based access control',
 ];
 
-const automationFeatures = [
-  'REST API integration',
-  'Batch processing',
-  'Webhook notifications',
-  'Custom workflows',
-  'Headless operation',
-  'CI/CD pipeline support',
-];
-
 export default function DualInterface() {
   const { theme } = useTheme();
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
   const { ref: webCardRef, isVisible: webCardVisible } = useScrollAnimation();
-  const { ref: automationCardRef, isVisible: automationCardVisible } = useScrollAnimation();
 
   return (
     <section
@@ -49,21 +39,20 @@ export default function DualInterface() {
           <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-4 ${
             theme === 'dark' ? 'text-white' : 'text-[#121212]'
           }`}>
-            Dual Interface:
+            Powerful
             <br />
-            <span className="gradient-text">Web App + Automation Engine</span>
+            <span className="gradient-text">Web Application</span>
           </h2>
           <p className={`text-lg ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>
-            Whether you prefer an intuitive web interface or need programmatic access for automation, VizeEST delivers both with enterprise-grade reliability.
+            An intuitive web interface designed for estimators and project managers, delivering enterprise-grade reliability.
           </p>
         </div>
 
-        {/* Two Column Layout */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Web Application */}
+        {/* Web Application Card */}
+        <div className="max-w-4xl mx-auto">
           <div
             ref={webCardRef}
-            className={`rounded-xl p-8 border transition-all hover:border-[#4EBABD] hover-lift scroll-fade-left ${webCardVisible ? 'animate-in' : ''} ${
+            className={`rounded-xl p-8 border transition-all hover:border-[#4EBABD] hover-lift scroll-fade-up ${webCardVisible ? 'animate-in' : ''} ${
               theme === 'dark'
                 ? 'bg-[#121212] border-[#2D2D2D]'
                 : 'bg-white border-[#E5E7EB] shadow-sm hover:shadow-lg'
@@ -87,7 +76,7 @@ export default function DualInterface() {
               A powerful yet intuitive web interface designed for daily use. Upload drawings, review detections, make adjustments, and generate reports—all from your browser.
             </p>
 
-            <div className="grid grid-cols-2 gap-3 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
               {webFeatures.map((feature, index) => (
                 <div
                   key={index}
@@ -131,86 +120,6 @@ export default function DualInterface() {
                     <div className={`rounded-lg h-10 shimmer ${theme === 'dark' ? 'bg-[#2D2D2D]' : 'bg-[#F8FAFB]'}`} style={{ animationDelay: '0.2s' }} />
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Automation Engine */}
-          <div
-            ref={automationCardRef}
-            className={`rounded-xl p-8 border transition-all hover:border-[#4EBABD] hover-lift scroll-fade-right ${automationCardVisible ? 'animate-in' : ''} ${
-              theme === 'dark'
-                ? 'bg-[#121212] border-[#2D2D2D]'
-                : 'bg-white border-[#E5E7EB] shadow-sm hover:shadow-lg'
-            }`}
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#2C7181] to-[#4EBABD] flex items-center justify-center text-white float-medium">
-                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className={`text-2xl font-bold ${
-                  theme === 'dark' ? 'text-white' : 'text-[#121212]'
-                }`}>Automation Engine</h3>
-                <p className={theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}>For developers & IT teams</p>
-              </div>
-            </div>
-
-            <p className={`mb-6 ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>
-              Full API access for seamless integration with your existing systems. Automate estimation workflows, process drawings in batch, and build custom applications.
-            </p>
-
-            <div className="grid grid-cols-2 gap-3 mb-8">
-              {automationFeatures.map((feature, index) => (
-                <div
-                  key={index}
-                  className={`flex items-center gap-2 scroll-fade-up ${automationCardVisible ? 'animate-in' : ''}`}
-                  style={{ transitionDelay: `${0.3 + index * 0.05}s` }}
-                >
-                  <svg className="w-5 h-5 text-[#10B981] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className={`text-sm ${theme === 'dark' ? 'text-white' : 'text-[#121212]'}`}>{feature}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Code Preview */}
-            <div className={`rounded-xl overflow-hidden border ${
-              theme === 'dark' ? 'border-[#2D2D2D]' : 'border-[#E5E7EB]'
-            } bg-[#0F172A]`}>
-              <div className="p-2 flex items-center gap-2 border-b border-white/10">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-400" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <div className="w-3 h-3 rounded-full bg-green-400" />
-                </div>
-                <span className="text-xs text-[#94A3B8]">api_example.py</span>
-              </div>
-              <div className="p-4 font-mono text-sm">
-                <div className="text-[#94A3B8]"># Process drawings via API</div>
-                <div className="mt-2">
-                  <span className="text-[#F472B6]">from</span>
-                  <span className="text-white"> vizeest </span>
-                  <span className="text-[#F472B6]">import</span>
-                  <span className="text-white"> Client</span>
-                </div>
-                <div className="mt-2">
-                  <span className="text-white">client = Client(api_key=</span>
-                  <span className="text-[#4EBABD]">&quot;...&quot;</span>
-                  <span className="text-white">)</span>
-                </div>
-                <div className="mt-2">
-                  <span className="text-white">result = client.detect(</span>
-                </div>
-                <div className="pl-4">
-                  <span className="text-white">file=</span>
-                  <span className="text-[#4EBABD]">&quot;drawing.pdf&quot;</span>
-                </div>
-                <div className="text-white">)</div>
               </div>
             </div>
           </div>

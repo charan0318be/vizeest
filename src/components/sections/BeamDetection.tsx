@@ -11,7 +11,7 @@ const features = [
       </svg>
     ),
     title: 'Intelligent Detection',
-    description: 'Advanced machine learning algorithms automatically identify and classify structural steel members from engineering drawings.',
+    description: 'Advanced algorithms automatically identify and classify structural steel members from engineering drawings.',
   },
   {
     icon: (
@@ -138,7 +138,7 @@ export default function BeamDetection() {
                 <div className="space-y-3">
                   {[
                     'Upload PDF or CAD drawings',
-                    'AI detects all steel members automatically',
+                    'System detects all steel members automatically',
                     'Review and adjust with intuitive tools',
                     'Export to Excel, CSV, or ERP systems',
                   ].map((step, index) => (

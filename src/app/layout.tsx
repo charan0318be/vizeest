@@ -32,18 +32,18 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://vizeest.com'),
   title: {
-    default: 'VizeEST | AI-Powered Structural Steel Estimation Platform',
+    default: 'VizeEST | Structural Steel Estimation Platform',
     template: '%s | VizeEST',
   },
   description:
-    'VizeEST delivers AI-powered beam detection, automated material take-offs, and enterprise-grade reporting for structural steel estimation. Reduce estimation time by 80% while improving accuracy to 98%+. Trusted by 500+ enterprises worldwide.',
+    'VizeEST delivers intelligent beam detection, automated material take-offs, and enterprise-grade reporting for structural steel estimation. Reduce estimation time by 80% while improving accuracy to 98%+. Trusted by 500+ enterprises worldwide.',
   keywords: [
     'structural steel estimation',
-    'beam detection AI',
+    'beam detection software',
     'material take-off software',
     'steel fabrication software',
     'construction estimation',
-    'AI estimation platform',
+    'estimation platform',
     'steel takeoff software',
     'fabrication automation',
     'structural engineering software',
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     'fabrication cost estimation',
     'structural steel takeoff',
     'PDF beam detection',
-    'drawing analysis AI',
+    'drawing analysis software',
     'construction SaaS',
   ],
   authors: [
@@ -90,9 +90,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://vizeest.com',
     siteName: 'VizeEST',
-    title: 'VizeEST | AI-Powered Structural Steel Estimation Platform',
+    title: 'VizeEST | Structural Steel Estimation Platform',
     description:
-      'Transform your steel estimation workflow with AI. Reduce estimation time by 80% with 98%+ accuracy. Trusted by 500+ enterprise teams.',
+      'Transform your steel estimation workflow. Reduce estimation time by 80% with 98%+ accuracy. Trusted by 500+ enterprise teams.',
     images: [
       {
         url: '/og-image.png',
@@ -114,9 +114,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@vizeest',
     creator: '@vizeest',
-    title: 'VizeEST | AI-Powered Structural Steel Estimation',
+    title: 'VizeEST | Structural Steel Estimation',
     description:
-      'Transform your steel estimation workflow with AI. Reduce time by 80% with 98%+ accuracy.',
+      'Transform your steel estimation workflow. Reduce time by 80% with 98%+ accuracy.',
     images: {
       url: '/og-image.png',
       alt: 'VizeEST - Enterprise Steel Estimation Platform',
@@ -177,7 +177,7 @@ const jsonLd = {
       '@id': 'https://vizeest.com/#website',
       url: 'https://vizeest.com',
       name: 'VizeEST',
-      description: 'AI-Powered Structural Steel Estimation Platform',
+      description: 'Structural Steel Estimation Platform',
       publisher: {
         '@id': 'https://vizeest.com/#organization',
       },
@@ -211,7 +211,7 @@ const jsonLd = {
         worstRating: '1',
       },
       featureList: [
-        'AI-Powered Beam Detection',
+        'Intelligent Beam Detection',
         'Automated Material Take-offs',
         'Enterprise Reporting',
         'BIM Integration',

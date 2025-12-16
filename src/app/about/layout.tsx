@@ -3,18 +3,18 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'About Us - Our Mission & Team',
   description:
-    'Learn about VizeEST\'s mission to revolutionize structural steel estimation. Meet our leadership team of industry veterans and AI experts committed to transforming construction technology.',
+    'Learn about VizeEST\'s mission to revolutionize structural steel estimation. Meet our leadership team of industry veterans and technology experts committed to transforming construction technology.',
   keywords: [
     'about VizeEST',
     'steel estimation company',
     'construction technology team',
-    'structural engineering AI',
+    'structural engineering software',
     'steel fabrication innovation',
   ],
   openGraph: {
     title: 'About VizeEST - Our Mission & Team',
     description:
-      'Discover how VizeEST is transforming the steel fabrication industry with AI-powered estimation. Meet our team of industry veterans and technology experts.',
+      'Discover how VizeEST is transforming the steel fabrication industry with intelligent estimation tools. Meet our team of industry veterans and technology experts.',
     url: 'https://vizeest.com/about',
     images: [
       {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     title: 'About VizeEST - Our Mission & Team',
     description:
-      'Discover how VizeEST is transforming the steel fabrication industry with AI-powered estimation.',
+      'Discover how VizeEST is transforming the steel fabrication industry with intelligent estimation tools.',
   },
   alternates: {
     canonical: 'https://vizeest.com/about',
@@ -42,7 +42,7 @@ const aboutJsonLd = {
   mainEntity: {
     '@type': 'Organization',
     name: 'VizeEST',
-    description: 'AI-Powered Structural Steel Estimation Platform',
+    description: 'Structural Steel Estimation Platform',
     foundingDate: '2020',
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
@@ -50,7 +50,7 @@ const aboutJsonLd = {
     },
     knowsAbout: [
       'Structural Steel Estimation',
-      'AI/Machine Learning',
+      'Software Development',
       'Construction Technology',
       'BIM Integration',
     ],

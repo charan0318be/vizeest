@@ -183,7 +183,7 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p className="text-lg sm:text-xl text-[#9CA3AF] max-w-3xl mx-auto mb-10 animate-fade-in-up leading-relaxed" style={{ animationDelay: '0.2s' }}>
-          VizeEST delivers AI-powered beam detection, automated material take-offs, and enterprise-grade reporting.
+          VizeEST delivers intelligent beam detection, automated material take-offs, and enterprise-grade reporting.
           <br className="hidden sm:block" />
           Reduce estimation time by <span className="text-[#4EBABD] font-semibold">80%</span> while improving accuracy to <span className="text-[#4EBABD] font-semibold">98%+</span>.
         </p>
@@ -223,20 +223,6 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Trusted By */}
-        <div className="mt-20 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-          <p className="text-sm text-[#6B7280] mb-8 uppercase tracking-wider font-medium">Trusted by Industry Leaders</p>
-          <div className="flex flex-wrap items-center justify-center gap-12">
-            {['Turner', 'Skanska', 'PCL', 'Gilbane', 'Mortenson'].map((company) => (
-              <div
-                key={company}
-                className="text-xl font-bold text-[#4A4A4A] hover:text-[#4EBABD] transition-colors duration-300 cursor-default"
-              >
-                {company}
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* Bottom Gradient */}

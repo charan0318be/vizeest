@@ -1,7 +1,6 @@
 'use client';
 
 import { useTheme } from '@/context/ThemeContext';
-import { useDemoModal } from '@/context/DemoModalContext';
 import { useScrollAnimation, useScrollAnimationGroup } from '@/hooks/useScrollAnimation';
 
 const reasons = [
@@ -21,7 +20,7 @@ const reasons = [
       </svg>
     ),
     title: '98%+ Accuracy',
-    description: 'AI-powered detection combined with human verification delivers industry-leading precision on every project.',
+    description: 'Intelligent detection combined with human verification delivers industry-leading precision on every project.',
   },
   {
     icon: (
@@ -84,11 +83,9 @@ const testimonials = [
 
 export default function WhyChoose() {
   const { theme } = useTheme();
-  const { openModal } = useDemoModal();
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
   const { ref: reasonsRef, isVisible: reasonsVisible, getStaggerClass } = useScrollAnimationGroup(reasons.length);
   const { ref: testimonialsRef, isVisible: testimonialsVisible } = useScrollAnimation();
-  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation();
 
   return (
     <section className={`py-24 transition-colors ${
@@ -177,44 +174,15 @@ export default function WhyChoose() {
                 </div>
                 <p className={`mb-6 italic ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>&ldquo;{testimonial.quote}&rdquo;</p>
                 <div>
-                  <p className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-[#121212]'}`}>{testimonial.author}</p>
+                  <p className={`font-medium blur-[4px] select-none ${theme === 'dark' ? 'text-white' : 'text-[#121212]'}`}>{testimonial.author}</p>
                   <p className={`text-sm ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>{testimonial.title}</p>
-                  <p className="text-sm text-[#4EBABD]">{testimonial.company}</p>
+                  <p className="text-sm text-[#4EBABD] blur-[4px] select-none">{testimonial.company}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Final CTA */}
-        <div
-          ref={ctaRef}
-          className={`mt-16 text-center scroll-fade-up ${ctaVisible ? 'animate-in' : ''}`}
-        >
-          <h3 className={`text-2xl font-bold mb-4 ${
-            theme === 'dark' ? 'text-white' : 'text-[#121212]'
-          }`}>
-            Ready to Transform Your Estimation Process?
-          </h3>
-          <p className={`mb-8 max-w-2xl mx-auto ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>
-            Join 500+ enterprise teams who have already made the switch. Get a personalized demo and see how VizeEST can work for your organization.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button onClick={openModal} className="btn btn-primary text-lg px-8 ripple-effect">
-              Schedule Demo
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </button>
-            <button onClick={openModal} className={`btn text-lg px-8 ${
-              theme === 'dark'
-                ? 'bg-transparent border-2 border-[#4EBABD] text-[#4EBABD] hover:bg-[#4EBABD] hover:text-white'
-                : 'btn-outline'
-            }`}>
-              Contact Sales
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   );

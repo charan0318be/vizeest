@@ -48,7 +48,7 @@ const qualityFeatures = [
 
 const workflowSteps = [
   { step: 1, title: 'Upload', description: 'Submit drawings for processing' },
-  { step: 2, title: 'Detect', description: 'AI identifies all steel members' },
+  { step: 2, title: 'Detect', description: 'System identifies all steel members' },
   { step: 3, title: 'Review', description: 'Human verification & adjustments' },
   { step: 4, title: 'Validate', description: 'Cross-reference with standards' },
   { step: 5, title: 'Approve', description: 'Manager sign-off workflow' },
@@ -87,7 +87,7 @@ export default function QualityControl() {
             <span className="text-[#06B6D4]">& Transparency</span>
           </h2>
           <p className="text-lg text-[#94A3B8]">
-            Trust but verify. VizeEST combines AI automation with human oversight to deliver results you can stand behind.
+            Trust but verify. VizeEST combines intelligent automation with human oversight to deliver results you can stand behind.
           </p>
         </div>
 

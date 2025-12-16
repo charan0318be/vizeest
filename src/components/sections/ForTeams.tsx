@@ -146,38 +146,6 @@ export default function ForTeams() {
           ))}
         </div>
 
-        {/* Collaboration CTA */}
-        <div className="mt-16 text-center">
-          <div className={`inline-flex flex-col sm:flex-row items-center gap-4 p-6 rounded-2xl border shadow-lg ${
-            theme === 'dark'
-              ? 'bg-[#121212] border-[#2D2D2D]'
-              : 'bg-white border-[#E5E7EB]'
-          }`}>
-            <div className="flex -space-x-3">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div
-                  key={i}
-                  className={`w-10 h-10 rounded-full bg-gradient-to-br from-[#4EBABD] to-[#2C7181] flex items-center justify-center text-white text-sm font-medium border-2 ${
-                    theme === 'dark' ? 'border-[#121212]' : 'border-white'
-                  }`}
-                >
-                  {String.fromCharCode(64 + i)}
-                </div>
-              ))}
-            </div>
-            <div className="text-left">
-              <p className={`font-medium ${
-                theme === 'dark' ? 'text-white' : 'text-[#121212]'
-              }`}>Join 500+ enterprise teams</p>
-              <p className={`text-sm ${
-                theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'
-              }`}>Already transforming their estimation workflows</p>
-            </div>
-            <a href="/contact" className="btn btn-primary">
-              Get Started
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );

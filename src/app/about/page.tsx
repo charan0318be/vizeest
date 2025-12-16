@@ -16,7 +16,7 @@ const teamMembers = [
   {
     name: 'Dr. Sarah Kim',
     role: 'CTO & Co-Founder',
-    bio: 'PhD in Computer Vision from MIT. Led AI teams at Google and Autodesk.',
+    bio: 'PhD in Computer Vision from MIT. Led engineering teams at Google and Autodesk.',
     image: null,
   },
   {
@@ -127,7 +127,7 @@ export default function AboutPage() {
             </h1>
             <p className="text-xl text-[#9CA3AF] max-w-3xl mx-auto">
               We&apos;re on a mission to revolutionize how the steel fabrication industry estimates, bids, and builds.
-              Through AI-powered automation, we&apos;re saving thousands of hours and helping teams win more projects.
+              Through intelligent automation, we&apos;re saving thousands of hours and helping teams win more projects.
             </p>
           </div>
         </section>
@@ -152,7 +152,7 @@ export default function AboutPage() {
                   We founded VizeEST to change that.
                 </p>
                 <p className={`text-lg mb-6 ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>
-                  Our platform combines cutting-edge AI with deep industry expertise to automate the most tedious parts
+                  Our platform combines cutting-edge technology with deep industry expertise to automate the most tedious parts
                   of estimation while keeping estimators in control. The result? 80% faster estimates with 98%+ accuracy.
                 </p>
                 <p className={`text-lg ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>
