@@ -17,6 +17,7 @@ const navigation = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
   const { theme, toggleTheme } = useTheme();
   const { openModal } = useDemoModal();
 
@@ -29,15 +30,50 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? theme === 'dark'
-            ? 'bg-[#121212]/95 backdrop-blur-md shadow-lg'
-            : 'bg-white/95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
-    >
+    <>
+      {/* Christmas Promo Banner */}
+      {showBanner && (
+        <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#c41e3a] via-[#dc143c] to-[#228b22] text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-center gap-3 relative">
+            <span className="text-lg">🎄</span>
+            <p className="text-sm font-medium text-center">
+              <span className="hidden sm:inline">🎅 Holiday Special: </span>
+              <span className="font-bold">Get 25% OFF</span> on all annual plans!
+            </p>
+            <Link
+              href="/#pricing"
+              className="hidden sm:inline-flex items-center gap-1 bg-white text-[#c41e3a] text-xs font-bold px-3 py-1 rounded-full hover:bg-white/90 transition-colors"
+            >
+              Claim Now
+              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <span className="text-lg">🎁</span>
+            <button
+              onClick={() => setShowBanner(false)}
+              className="absolute right-2 sm:right-4 p-1 hover:bg-white/20 rounded transition-colors"
+              aria-label="Close banner"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+
+      <header
+        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
+          showBanner ? 'top-[44px]' : 'top-0'
+        } ${
+          isScrolled
+            ? theme === 'dark'
+              ? 'bg-[#121212]/95 backdrop-blur-md shadow-lg'
+              : 'bg-white/95 backdrop-blur-md shadow-lg'
+            : 'bg-transparent'
+        }`}
+      >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -244,5 +280,6 @@ export default function Header() {
         )}
       </nav>
     </header>
+    </>
   );
 }

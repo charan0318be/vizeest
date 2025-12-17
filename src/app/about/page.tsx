@@ -6,33 +6,6 @@ import { useScrollAnimation, useScrollAnimationGroup, useCountUp } from '@/hooks
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
-const teamMembers = [
-  {
-    name: 'David Richardson',
-    role: 'CEO & Co-Founder',
-    bio: '20+ years in structural steel fabrication. Former VP at Turner Construction.',
-    image: null,
-  },
-  {
-    name: 'Dr. Sarah Kim',
-    role: 'CTO & Co-Founder',
-    bio: 'PhD in Computer Vision from MIT. Led engineering teams at Google and Autodesk.',
-    image: null,
-  },
-  {
-    name: 'Michael Torres',
-    role: 'VP of Engineering',
-    bio: '15 years building enterprise software. Former engineering director at Procore.',
-    image: null,
-  },
-  {
-    name: 'Jennifer Walsh',
-    role: 'VP of Customer Success',
-    bio: 'Deep expertise in construction technology adoption. Former at Bluebeam.',
-    image: null,
-  },
-];
-
 const values = [
   {
     icon: (
@@ -92,7 +65,6 @@ export default function AboutPage() {
   const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation();
   const { ref: missionRef, isVisible: missionVisible } = useScrollAnimation();
   const { ref: valuesRef, isVisible: valuesVisible, getStaggerClass } = useScrollAnimationGroup(values.length);
-  const { ref: teamRef, isVisible: teamVisible, getStaggerClass: getTeamStaggerClass } = useScrollAnimationGroup(teamMembers.length);
   const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation();
 
   return (
@@ -211,42 +183,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team Section */}
-        <section className={`py-20 transition-colors ${
-          theme === 'dark' ? 'bg-[#121212]' : 'bg-white'
-        }`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`text-center mb-16 scroll-fade-up ${teamVisible ? 'animate-in' : ''}`}>
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-                theme === 'dark' ? 'text-white' : 'text-[#121212]'
-              }`}>Leadership Team</h2>
-              <p className={`text-lg max-w-2xl mx-auto ${
-                theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'
-              }`}>
-                Industry veterans and technology experts united by a shared vision.
-              </p>
-            </div>
-            <div ref={teamRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {teamMembers.map((member, index) => (
-                <div key={index} className={`rounded-xl p-6 border text-center transition-all hover-lift hover-glow scroll-scale-up ${teamVisible ? getTeamStaggerClass(index) : ''} ${
-                  theme === 'dark'
-                    ? 'bg-[#1E1E1E] border-[#2D2D2D]'
-                    : 'bg-[#F8FAFB] border-[#E5E7EB] shadow-sm'
-                }`}>
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#4EBABD] to-[#2C7181] flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 morph-shape">
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <h3 className={`font-bold mb-1 ${
-                    theme === 'dark' ? 'text-white' : 'text-[#121212]'
-                  }`}>{member.name}</h3>
-                  <p className="text-sm text-[#4EBABD] mb-2">{member.role}</p>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>{member.bio}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* CTA Section */}
         <section className="py-20 bg-[#121212]">
           <div
@@ -257,17 +193,11 @@ export default function AboutPage() {
               Join Us in Transforming the Industry
             </h2>
             <p className="text-lg text-[#9CA3AF] max-w-2xl mx-auto mb-8">
-              Whether you&apos;re looking to revolutionize your estimation process or join our team,
-              we&apos;d love to hear from you.
+              Ready to revolutionize your estimation process? We&apos;d love to hear from you.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button onClick={openModal} className="btn btn-primary ripple-effect">
-                Request a Demo
-              </button>
-              <button onClick={openModal} className="btn bg-transparent border-2 border-[#4EBABD] text-[#4EBABD] hover:bg-[#4EBABD] hover:text-white">
-                View Open Positions
-              </button>
-            </div>
+            <button onClick={openModal} className="btn btn-primary ripple-effect">
+              Request a Demo
+            </button>
           </div>
         </section>
       </main>

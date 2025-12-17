@@ -4,14 +4,85 @@ import { useTheme } from '@/context/ThemeContext';
 import { useScrollAnimation, useScrollAnimationGroup } from '@/hooks/useScrollAnimation';
 
 const integrations = [
-  { name: 'SAP', category: 'ERP' },
-  { name: 'Oracle', category: 'ERP' },
-  { name: 'Microsoft Dynamics', category: 'ERP' },
-  { name: 'Procore', category: 'Project Mgmt' },
-  { name: 'Autodesk BIM 360', category: 'BIM' },
-  { name: 'Tekla', category: 'Detailing' },
-  { name: 'Revit', category: 'BIM' },
-  { name: 'Bluebeam', category: 'Markup' },
+  { 
+    name: 'SAP', 
+    category: 'ERP', 
+    logo: (
+      <svg viewBox="0 0 92 46" className="w-7 h-3.5">
+        <path fill="#0FAAFF" d="M0 0.5h46l22.8 22.8L46 46H0L22.8 23.3 0 0.5zm62 11.7c-4.8 0-8.7 3.9-8.7 8.7s3.9 8.7 8.7 8.7 8.7-3.9 8.7-8.7-3.9-8.7-8.7-8.7zm19 0c-4.8 0-8.7 3.9-8.7 8.7s3.9 8.7 8.7 8.7 8.7-3.9 8.7-8.7-3.9-8.7-8.7-8.7z"/>
+      </svg>
+    )
+  },
+  { 
+    name: 'Oracle', 
+    category: 'ERP', 
+    logo: (
+      <svg viewBox="0 0 100 30" className="w-8 h-2.5">
+        <path fill="#F80000" d="M14.8 0C6.6 0 0 6.7 0 15s6.6 15 14.8 15h70.4C93.4 30 100 23.3 100 15S93.4 0 85.2 0H14.8zm0 5h70.4c5.5 0 9.8 4.5 9.8 10s-4.3 10-9.8 10H14.8C9.3 25 5 20.5 5 15S9.3 5 14.8 5z"/>
+      </svg>
+    )
+  },
+  { 
+    name: 'Microsoft', 
+    category: 'ERP', 
+    logo: (
+      <svg viewBox="0 0 23 23" className="w-4 h-4">
+        <path fill="#f25022" d="M0 0h11v11H0z"/>
+        <path fill="#00a4ef" d="M12 0h11v11H12z"/>
+        <path fill="#7fba00" d="M0 12h11v11H0z"/>
+        <path fill="#ffb900" d="M12 12h11v11H12z"/>
+      </svg>
+    )
+  },
+  { 
+    name: 'Procore', 
+    category: 'Project Mgmt', 
+    logo: (
+      <svg viewBox="0 0 40 40" className="w-5 h-5">
+        <circle fill="#FF6900" cx="20" cy="20" r="20"/>
+        <path fill="#fff" d="M20 8c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12-5.4-12-12-12zm0 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/>
+      </svg>
+    )
+  },
+  { 
+    name: 'Autodesk', 
+    category: 'BIM', 
+    logo: (
+      <svg viewBox="0 0 40 40" className="w-5 h-5">
+        <path fill="#0696D7" d="M20 0L0 35h12l8-14 8 14h12L20 0zm0 14l5 9h-10l5-9z"/>
+      </svg>
+    )
+  },
+  { 
+    name: 'Tekla', 
+    category: 'Detailing', 
+    logo: (
+      <svg viewBox="0 0 40 40" className="w-5 h-5">
+        <rect fill="#00A9CE" width="40" height="40" rx="4"/>
+        <path fill="#fff" d="M8 12h24v4H22v16h-4V16H8v-4z"/>
+      </svg>
+    )
+  },
+  { 
+    name: 'Revit', 
+    category: 'BIM', 
+    logo: (
+      <svg viewBox="0 0 40 40" className="w-5 h-5">
+        <rect fill="#0696D7" width="40" height="40" rx="4"/>
+        <path fill="#fff" d="M10 10h10c4.4 0 8 3.6 8 8 0 3.5-2.3 6.5-5.5 7.5L28 30h-6l-5-4h-3v4h-4V10zm4 4v8h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6z"/>
+      </svg>
+    )
+  },
+  { 
+    name: 'Bluebeam', 
+    category: 'Markup', 
+    logo: (
+      <svg viewBox="0 0 40 40" className="w-5 h-5">
+        <rect fill="#2E5C9A" width="40" height="40" rx="4"/>
+        <path fill="#fff" d="M10 8h10c3.3 0 6 2.7 6 6 0 2-1 3.8-2.5 4.9 2.3.9 4 3.2 4 5.9 0 3.5-2.8 6.2-6.2 6.2H10V8zm4 4v6h5.5c1.4 0 2.5-1.1 2.5-2.5s-1.1-2.5-2.5-2.5H14v-1zm0 10v7h6.3c1.5 0 2.7-1.2 2.7-2.7v-1.6c0-1.5-1.2-2.7-2.7-2.7H14z"/>
+      </svg>
+    )
+  },
 ];
 
 const securityFeatures = [
@@ -156,21 +227,24 @@ export default function EnterpriseReadiness() {
               {integrations.map((integration, index) => (
                 <div
                   key={index}
-                  className={`flex items-center justify-between p-3 rounded-lg border transition-all hover:scale-105 scroll-scale-up ${integrationVisible ? 'animate-in' : ''} ${
+                  className={`group flex items-center gap-3 p-4 rounded-xl border transition-all hover:scale-105 hover:shadow-lg scroll-scale-up ${integrationVisible ? 'animate-in' : ''} ${
                     theme === 'dark'
-                      ? 'bg-[#2D2D2D] border-[#3D3D3D] hover:border-[#4EBABD]'
-                      : 'bg-[#F8FAFB] border-[#E5E7EB] hover:border-[#4EBABD]'
+                      ? 'bg-[#1E1E1E] border-[#3D3D3D] hover:border-[#4EBABD]'
+                      : 'bg-white border-[#E5E7EB] hover:border-[#4EBABD] shadow-sm'
                   }`}
                   style={{ transitionDelay: `${0.2 + index * 0.05}s` }}
                 >
-                  <span className={`font-medium ${
-                    theme === 'dark' ? 'text-white' : 'text-[#121212]'
-                  }`}>{integration.name}</span>
-                  <span className={`text-xs px-2 py-1 rounded ${
-                    theme === 'dark'
-                      ? 'text-[#9CA3AF] bg-[#1E1E1E]'
-                      : 'text-[#6B7280] bg-white'
-                  }`}>{integration.category}</span>
+                  <div className="flex-shrink-0 w-9 h-9 rounded-md bg-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+                    {integration.logo}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className={`font-semibold text-sm truncate ${
+                      theme === 'dark' ? 'text-white' : 'text-[#121212]'
+                    }`}>{integration.name}</div>
+                    <div className={`text-xs ${
+                      theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'
+                    }`}>{integration.category}</div>
+                  </div>
                 </div>
               ))}
             </div>

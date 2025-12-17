@@ -10,6 +10,7 @@ import ForTeams from '@/components/sections/ForTeams';
 import EnterpriseReadiness from '@/components/sections/EnterpriseReadiness';
 import QualityControl from '@/components/sections/QualityControl';
 import WhyChoose from '@/components/sections/WhyChoose';
+import Pricing from '@/components/sections/Pricing';
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <EnterpriseReadiness />
         <QualityControl />
         <WhyChoose />
+        <Pricing />
       </main>
       <Footer />
     </>

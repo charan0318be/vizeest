@@ -15,27 +15,6 @@ const contactReasons = [
   'Other',
 ];
 
-const offices = [
-  {
-    city: 'San Francisco',
-    country: 'USA (Headquarters)',
-    address: '100 Montgomery St, Suite 2000',
-    phone: '+1 (415) 555-0123',
-  },
-  {
-    city: 'New York',
-    country: 'USA',
-    address: '350 Fifth Avenue, Suite 4500',
-    phone: '+1 (212) 555-0123',
-  },
-  {
-    city: 'London',
-    country: 'United Kingdom',
-    address: '30 St Mary Axe',
-    phone: '+44 20 7123 4567',
-  },
-];
-
 export default function ContactPage() {
   const { theme } = useTheme();
   const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation();
@@ -373,40 +352,6 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Office Locations */}
-                <div>
-                  <h3 className={`text-xl font-bold mb-6 ${
-                    theme === 'dark' ? 'text-white' : 'text-[#121212]'
-                  }`}>Our Offices</h3>
-                  <div className="space-y-4">
-                    {offices.map((office, index) => (
-                      <div
-                        key={index}
-                        className={`rounded-xl p-6 border transition-all hover-lift hover-glow scroll-flip-up ${infoVisible ? 'animate-in' : ''} ${
-                          theme === 'dark'
-                            ? 'bg-[#1E1E1E] border-[#2D2D2D] hover:border-[#4EBABD]'
-                            : 'bg-[#F8FAFB] border-[#E5E7EB] hover:border-[#4EBABD]'
-                        }`}
-                        style={{ transitionDelay: `${0.3 + index * 0.1}s` }}
-                      >
-                        <div className="flex items-start gap-4">
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#4EBABD] to-[#2C7181] flex items-center justify-center text-white flex-shrink-0">
-                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                          </div>
-                          <div>
-                            <p className={`font-bold ${theme === 'dark' ? 'text-white' : 'text-[#121212]'}`}>{office.city}</p>
-                            <p className={`text-sm ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>{office.country}</p>
-                            <p className={`text-sm mt-2 ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>{office.address}</p>
-                            <p className="text-sm text-[#4EBABD]">{office.phone}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </div>

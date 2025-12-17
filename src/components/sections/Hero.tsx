@@ -204,11 +204,10 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+        <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
           {[
             { value: '80%', label: 'Time Saved', icon: '⚡' },
             { value: '98%+', label: 'Accuracy Rate', icon: '🎯' },
-            { value: '500+', label: 'Enterprise Clients', icon: '🏢' },
             { value: '10M+', label: 'Beams Detected', icon: '📊' },
           ].map((stat, i) => (
             <div key={i} className="text-center group">
