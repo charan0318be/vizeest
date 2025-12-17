@@ -9,8 +9,8 @@ const plans = [
   {
     name: 'Professional',
     description: 'Everything you need per user',
-    monthlyPrice: 599,
-    annualPrice: 350,
+    monthlyPrice: 350,
+    annualPrice: 249,
     features: [
       'Unlimited drawings',
       'Unlimited storage',
