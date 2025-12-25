@@ -158,16 +158,19 @@ export default function BeamDetection() {
                 </div>
               </div>
               <div className="relative">
-                {/* Placeholder for demo video/screenshot */}
-                <div className="aspect-video bg-gradient-to-br from-[#121212] to-[#1E1E1E] rounded-xl flex items-center justify-center border border-[#2D2D2D] overflow-hidden group cursor-pointer">
-                  <div className="text-center">
-                    <div className="w-16 h-16 rounded-full bg-[#4EBABD]/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#4EBABD]/40 group-hover:scale-110 transition-all">
-                      <svg className="w-8 h-8 text-[#4EBABD] ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                    <p className="text-[#9CA3AF] text-sm group-hover:text-[#4EBABD] transition-colors">Watch Demo Video</p>
-                  </div>
+                {/* Demo Video */}
+                <div className="aspect-video bg-gradient-to-br from-[#121212] to-[#1E1E1E] rounded-xl border border-[#2D2D2D] overflow-hidden">
+                  <video
+                    className="w-full h-full object-cover"
+                    controls
+                    loop
+                    muted
+                    playsInline
+                    poster=""
+                  >
+                    <source src="/VizeEst_Web_Demo.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
               </div>
             </div>
