@@ -223,9 +223,9 @@ export default function Pricing() {
                         /month per user
                       </span>
                     </div>
-                    {isAnnual && (
+                    {isAnnual && plan.annualPrice && (
                       <p className={`text-xs mt-2 font-medium ${theme === 'dark' ? 'text-[#4EBABD]' : 'text-[#2C7181]'}`}>
-                        💳 Billed annually at ${(plan.annualPrice * 12).toLocaleString()}
+                        Billed annually at ${(plan.annualPrice * 12).toLocaleString()}
                       </p>
                     )}
                   </div>
