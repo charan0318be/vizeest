@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VizeEST Email Templates Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #4EBABD 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .category {
+            margin-bottom: 60px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .category-title {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .category-count {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #4EBABD 0%, #2C7181 100%);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 20px;
+        }
+
+        .template-card {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border: 1px solid #475569;
+            border-radius: 16px;
+            padding: 28px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: #4EBABD;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .badge-transactional {
+            background-color: rgba(14, 165, 233, 0.2);
+            color: #38bdf8;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .badge-promo {
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .badge-enterprise {
+            background-color: rgba(168, 85, 247, 0.2);
+            color: #c084fc;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .badge-general {
+            background-color: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .badge-program {
+            background-color: rgba(236, 72, 153, 0.2);
+            color: #f472b6;
+            border: 1px solid rgba(236, 72, 153, 0.3);
+        }
+
+        .template-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .template-card p {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .template-card .features {
+            margin-bottom: 24px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .feature-item::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            background-color: #10B981;
+            color: #ffffff;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .btn-preview {
+            display: inline-block;
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #4EBABD 0%, #2C7181 100%);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(78, 186, 189, 0.3);
+        }
+
+        .btn-preview:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(78, 186, 189, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #334155;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 24px 40px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border: 1px solid #475569;
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #4EBABD 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .new-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 4px 10px;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: #ffffff;
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>VizeEST Email Templates</h1>
+            <p>Enterprise-grade HTML email templates for digital marketing campaigns. Fully responsive, professionally designed, and ready for production.</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">21</span>
+                <span class="stat-label">Email Templates</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Mobile Responsive</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Categories</span>
+            </div>
+        </div>
+
+        <!-- Enterprise Emails -->
+        <div class="category">
+            <div class="category-header">
+                <h2 class="category-title">Enterprise Marketing</h2>
+                <span class="category-count">4 Templates</span>
+            </div>
+            <div class="templates-grid">
+
+                <div class="template-card">
+                    <span class="new-badge">New</span>
+                    <span class="badge badge-enterprise">Enterprise</span>
+                    <h3>ROI Calculator</h3>
+                    <p>Data-driven email with personalized ROI analysis for enterprise prospects.</p>
+                    <div class="features">
+                        <div class="feature-item">Hero image with stats grid</div>
+                        <div class="feature-item">Clickable metric cards</div>
+                        <div class="feature-item">Executive contact section</div>
+                    </div>
+                    <a href="enterprise-roi/roi-calculator.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="new-badge">New</span>
+                    <span class="badge badge-enterprise">Enterprise</span>
+                    <h3>Industry Whitepaper</h3>
+                    <p>Research-focused email promoting downloadable industry reports.</p>
+                    <div class="features">
+                        <div class="feature-item">Report cover mockup</div>
+                        <div class="feature-item">Key findings preview</div>
+                        <div class="feature-item">Expert contributors</div>
+                    </div>
+                    <a href="enterprise-whitepaper/whitepaper.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="new-badge">New</span>
+                    <span class="badge badge-enterprise">Enterprise</span>
+                    <h3>Executive Demo</h3>
+                    <p>Premium, elegant invitation for executive-level demo sessions.</p>
+                    <div class="features">
+                        <div class="feature-item">Gold accent design</div>
+                        <div class="feature-item">Dedicated team profiles</div>
+                        <div class="feature-item">Calendar scheduling CTA</div>
+                    </div>
+                    <a href="enterprise-demo/executive-demo.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="new-badge">New</span>
+                    <span class="badge badge-enterprise">Enterprise</span>
+                    <h3>Partnership Announcement</h3>
+                    <p>Strategic partnership announcement with integration highlights.</p>
+                    <div class="features">
+                        <div class="feature-item">Dual company branding</div>
+                        <div class="feature-item">Integration showcase grid</div>
+                        <div class="feature-item">Executive quotes</div>
+                    </div>
+                    <a href="enterprise-partnership/partnership-announcement.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Promotional Emails -->
+        <div class="category">
+            <div class="category-header">
+                <h2 class="category-title">Promotional Campaigns</h2>
+                <span class="category-count">8 Templates</span>
+            </div>
+            <div class="templates-grid">
+
+                <div class="template-card">
+                    <span class="badge badge-promo">Promotional</span>
+                    <h3>Limited-Time Offer</h3>
+                    <p>Drive urgency with time-limited discounts (30% OFF annual plans).</p>
+                    <div class="features">
+                        <div class="feature-item">Countdown timer</div>
+                        <div class="feature-item">Pricing comparison</div>
+                        <div class="feature-item">Trust indicators</div>
+                    </div>
+                    <a href="promo-limited-offer/limited-offer.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="badge badge-promo">Promotional</span>
+                    <h3>Free Trial</h3>
+                    <p>Convert leads with 14-day free trial offer, no credit card required.</p>
+                    <div class="features">
+                        <div class="feature-item">Benefits showcase</div>
+                        <div class="feature-item">3-step process</div>
+                        <div class="feature-item">Social proof stats</div>
+                    </div>
+                    <a href="promo-free-trial/free-trial.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="badge badge-promo">Promotional</span>
+                    <h3>Webinar Invitation</h3>
+                    <p>Event registration with detailed agenda and exclusive bonuses.</p>
+                    <div class="features">
+                        <div class="feature-item">Event details box</div>
+                        <div class="feature-item">Speaker bio</div>
+                        <div class="feature-item">Limited spots urgency</div>
+                    </div>
+                    <a href="promo-webinar/webinar-invitation.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="badge badge-promo">Promotional</span>
+                    <h3>Win-Back Campaign</h3>
+                    <p>Re-engage inactive users with special 50% OFF welcome back offer.</p>
+                    <div class="features">
+                        <div class="feature-item">Emotional appeal</div>
+                        <div class="feature-item">New features showcase</div>
+                        <div class="feature-item">Promo code display</div>
+                    </div>
+                    <a href="promo-reengagement/win-back.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="badge badge-promo">Promotional</span>
+                    <h3>Product Launch</h3>
+                    <p>Announce new features with compelling visuals and CTAs.</p>
+                    <div class="features">
+                        <div class="feature-item">Feature highlights</div>
+                        <div class="feature-item">Tutorial links</div>
+                        <div class="feature-item">Early testimonial</div>
+                    </div>
+                    <a href="promo-product-launch/product-launch.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="badge badge-promo">Promotional</span>
+                    <h3>Case Study</h3>
+                    <p>Customer success story with metrics and testimonials.</p>
+                    <div class="features">
+                        <div class="feature-item">Before/after results</div>
+                        <div class="feature-item">Large metrics display</div>
+                        <div class="feature-item">Customer quote</div>
+                    </div>
+                    <a href="promo-case-study/case-study.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="badge badge-promo">Promotional</span>
+                    <h3>Referral Program</h3>
+                    <p>Drive referrals with $500 rewards and leaderboard bonuses.</p>
+                    <div class="features">
+                        <div class="feature-item">Reward structure</div>
+                        <div class="feature-item">Personal referral link</div>
+                        <div class="feature-item">3-step process</div>
+                    </div>
+                    <a href="promo-referral/referral-program.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="badge badge-promo">Promotional</span>
+                    <h3>Lead Magnet</h3>
+                    <p>Content marketing email with free downloadable guide.</p>
+                    <div class="features">
+                        <div class="feature-item">eBook cover mockup</div>
+                        <div class="feature-item">Chapter preview</div>
+                        <div class="feature-item">Social proof stats</div>
+                    </div>
+                    <a href="promo-lead-magnet/lead-magnet.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Transactional Emails -->
+        <div class="category">
+            <div class="category-header">
+                <h2 class="category-title">Transactional Emails</h2>
+                <span class="category-count">4 Templates</span>
+            </div>
+            <div class="templates-grid">
+
+                <div class="template-card">
+                    <span class="badge badge-transactional">Transactional</span>
+                    <h3>Welcome Email</h3>
+                    <p>Onboard new users with a warm welcome and feature highlights.</p>
+                    <div class="features">
+                        <div class="feature-item">Feature checklist</div>
+                        <div class="feature-item">Clear CTA button</div>
+                        <div class="feature-item">Professional light theme</div>
+                    </div>
+                    <a href="welcome/welcome.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="badge badge-transactional">Transactional</span>
+                    <h3>Demo Confirmation</h3>
+                    <p>Confirm demo requests with next steps and contact info.</p>
+                    <div class="features">
+                        <div class="feature-item">3-step process timeline</div>
+                        <div class="feature-item">Contact details display</div>
+                        <div class="feature-item">Dark professional design</div>
+                    </div>
+                    <a href="demo-confirmation/demo-confirmation.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="badge badge-transactional">Transactional</span>
+                    <h3>Quote Ready</h3>
+                    <p>Notify users when their estimate is ready to download.</p>
+                    <div class="features">
+                        <div class="feature-item">Project summary table</div>
+                        <div class="feature-item">Success banner</div>
+                        <div class="feature-item">Download CTA</div>
+                    </div>
+                    <a href="quote-ready/quote-ready.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="badge badge-transactional">Transactional</span>
+                    <h3>Newsletter</h3>
+                    <p>Engage subscribers with product updates and company news.</p>
+                    <div class="features">
+                        <div class="feature-item">Feature announcements</div>
+                        <div class="feature-item">Stats section</div>
+                        <div class="feature-item">Customer spotlight</div>
+                    </div>
+                    <a href="newsletter/newsletter.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- General Purpose Emails -->
+        <div class="category">
+            <div class="category-header">
+                <h2 class="category-title">General Purpose</h2>
+                <span class="category-count">4 Templates</span>
+            </div>
+            <div class="templates-grid">
+
+                <div class="template-card">
+                    <span class="new-badge">New</span>
+                    <span class="badge badge-general">General</span>
+                    <h3>Company Announcement</h3>
+                    <p>Versatile template for company news, updates, and important announcements.</p>
+                    <div class="features">
+                        <div class="feature-item">Flexible headline structure</div>
+                        <div class="feature-item">Key highlights list</div>
+                        <div class="feature-item">Optional CTA section</div>
+                    </div>
+                    <a href="general-announcement/announcement.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="new-badge">New</span>
+                    <span class="badge badge-general">General</span>
+                    <h3>Meeting Follow-Up</h3>
+                    <p>Professional follow-up with meeting summary, action items, and next steps.</p>
+                    <div class="features">
+                        <div class="feature-item">Meeting summary box</div>
+                        <div class="feature-item">Action items checklist</div>
+                        <div class="feature-item">Next meeting scheduler</div>
+                    </div>
+                    <a href="general-followup/meeting-followup.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="new-badge">New</span>
+                    <span class="badge badge-general">General</span>
+                    <h3>Feedback Request</h3>
+                    <p>Collect customer feedback with quick rating and survey invitation.</p>
+                    <div class="features">
+                        <div class="feature-item">Interactive emoji ratings</div>
+                        <div class="feature-item">Time estimate display</div>
+                        <div class="feature-item">Privacy assurance</div>
+                    </div>
+                    <a href="general-feedback/feedback-request.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+                <div class="template-card">
+                    <span class="new-badge">New</span>
+                    <span class="badge badge-general">General</span>
+                    <h3>Service Notification</h3>
+                    <p>System updates, maintenance alerts, and service status notifications.</p>
+                    <div class="features">
+                        <div class="feature-item">Multiple status badges</div>
+                        <div class="feature-item">Impact details table</div>
+                        <div class="feature-item">Support contact section</div>
+                    </div>
+                    <a href="general-notification/service-notification.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Program Emails -->
+        <div class="category">
+            <div class="category-header">
+                <h2 class="category-title">Program Emails</h2>
+                <span class="category-count">1 Template</span>
+            </div>
+            <div class="templates-grid">
+
+                <div class="template-card">
+                    <span class="new-badge">New</span>
+                    <span class="badge badge-program">Program</span>
+                    <h3>Accelerators Announcement</h3>
+                    <p>Where steel fabricators lose margin — and how the next 25 will fix it.</p>
+                    <div class="features">
+                        <div class="feature-item">Problem-solution messaging</div>
+                        <div class="feature-item">5 Accelerator benefits</div>
+                        <div class="feature-item">Program status snapshot</div>
+                    </div>
+                    <a href="accelerators-program/accelerators-announcement.html" target="_blank" class="btn-preview">Preview Template</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>VizeEST Email Templates Collection</p>
+            <p style="margin-top: 10px; font-size: 12px;">
+                All templates are mobile-responsive, enterprise-grade, and compatible with major email clients (Gmail, Outlook, Apple Mail)
+            </p>
+        </div>
+    </div>
+</body>
+</html>

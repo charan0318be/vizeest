@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Service Notification - VizeEST</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f1f5f9; line-height: 1.6;">
+
+    <!-- Preview Text -->
+    <div style="display: none; max-height: 0; overflow: hidden;">
+        [Service notification preview text - Important update about your VizeEST account]
+    </div>
+
+    <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f1f5f9;">
+        <tr>
+            <td align="center" style="padding: 40px 20px;">
+                <table role="presentation" style="width: 100%; max-width: 600px; border-collapse: collapse;">
+
+                    <!-- Header -->
+                    <tr>
+                        <td style="padding: 0 0 24px; text-align: center;">
+                            <a href="https://vizeest.com">
+                                <img src="https://vizeest.com/logo.png" alt="VizeEST" width="120" height="36" style="display: inline-block; border: 0;">
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Status Badge - Choose ONE: Info (blue), Warning (yellow), Success (green), Error (red) -->
+                    <!-- INFO VERSION -->
+                    <tr>
+                        <td style="padding: 0 0 24px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 16px 20px;">
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: middle;">
+                                                    <div style="width: 32px; height: 32px; background-color: #3b82f6; border-radius: 50%; text-align: center; line-height: 32px;">
+                                                        <span style="color: #ffffff; font-size: 16px;">ℹ️</span>
+                                                    </div>
+                                                </td>
+                                                <td style="vertical-align: middle; padding-left: 12px;">
+                                                    <p style="margin: 0; color: #1e40af; font-size: 14px; font-weight: 600;">[Notification Type: Information / Maintenance / Update]</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Alternative Status Badges (uncomment the one you need) -->
+
+                    <!-- WARNING VERSION
+                    <tr>
+                        <td style="padding: 0 0 24px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #fefce8; border: 1px solid #fde047; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 16px 20px;">
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: middle;">
+                                                    <div style="width: 32px; height: 32px; background-color: #eab308; border-radius: 50%; text-align: center; line-height: 32px;">
+                                                        <span style="color: #ffffff; font-size: 16px;">⚠️</span>
+                                                    </div>
+                                                </td>
+                                                <td style="vertical-align: middle; padding-left: 12px;">
+                                                    <p style="margin: 0; color: #a16207; font-size: 14px; font-weight: 600;">Warning: Action Required</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    -->
+
+                    <!-- SUCCESS VERSION
+                    <tr>
+                        <td style="padding: 0 0 24px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f0fdf4; border: 1px solid #86efac; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 16px 20px;">
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: middle;">
+                                                    <div style="width: 32px; height: 32px; background-color: #22c55e; border-radius: 50%; text-align: center; line-height: 32px;">
+                                                        <span style="color: #ffffff; font-size: 16px;">✓</span>
+                                                    </div>
+                                                </td>
+                                                <td style="vertical-align: middle; padding-left: 12px;">
+                                                    <p style="margin: 0; color: #166534; font-size: 14px; font-weight: 600;">Completed Successfully</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    -->
+
+                    <!-- ERROR VERSION
+                    <tr>
+                        <td style="padding: 0 0 24px;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #fef2f2; border: 1px solid #fecaca; border-radius: 8px;">
+                                <tr>
+                                    <td style="padding: 16px 20px;">
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td style="width: 40px; vertical-align: middle;">
+                                                    <div style="width: 32px; height: 32px; background-color: #ef4444; border-radius: 50%; text-align: center; line-height: 32px;">
+                                                        <span style="color: #ffffff; font-size: 16px;">!</span>
+                                                    </div>
+                                                </td>
+                                                <td style="vertical-align: middle; padding-left: 12px;">
+                                                    <p style="margin: 0; color: #b91c1c; font-size: 14px; font-weight: 600;">Critical: Immediate Action Required</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    -->
+
+                    <!-- Main Card -->
+                    <tr>
+                        <td style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+
+                            <!-- Content -->
+                            <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                <tr>
+                                    <td style="padding: 40px;">
+
+                                        <!-- Headline -->
+                                        <h1 style="margin: 0 0 20px; color: #0f172a; font-size: 24px; font-weight: 700; line-height: 1.3;">
+                                            [Notification Headline]
+                                        </h1>
+
+                                        <!-- Date/Time -->
+                                        <p style="margin: 0 0 24px; color: #64748b; font-size: 14px;">
+                                            <strong>Date:</strong> [Month Day, Year] • <strong>Time:</strong> [HH:MM AM/PM UTC]
+                                        </p>
+
+                                        <!-- Main Message -->
+                                        <p style="margin: 0 0 20px; color: #334155; font-size: 15px; line-height: 1.7;">
+                                            [Main notification message. Clearly explain what is happening, why, and when. Keep it concise and actionable.]
+                                        </p>
+
+                                        <!-- Details Box -->
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse; margin: 0 0 24px; background-color: #f8fafc; border-radius: 8px;">
+                                            <tr>
+                                                <td style="padding: 24px;">
+                                                    <p style="margin: 0 0 16px; color: #0f172a; font-size: 14px; font-weight: 700;">Details</p>
+                                                    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                                        <tr>
+                                                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                                                <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td style="width: 120px; color: #64748b; font-size: 14px; vertical-align: top;">What:</td>
+                                                                        <td style="color: #334155; font-size: 14px;">[Brief description of what's happening]</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                                                <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td style="width: 120px; color: #64748b; font-size: 14px; vertical-align: top;">When:</td>
+                                                                        <td style="color: #334155; font-size: 14px;">[Start time] - [End time] ([Timezone])</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">
+                                                                <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td style="width: 120px; color: #64748b; font-size: 14px; vertical-align: top;">Impact:</td>
+                                                                        <td style="color: #334155; font-size: 14px;">[What users can expect / what will be affected]</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 8px 0;">
+                                                                <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td style="width: 120px; color: #64748b; font-size: 14px; vertical-align: top;">Action Required:</td>
+                                                                        <td style="color: #334155; font-size: 14px;">[Yes/No - If yes, describe what user needs to do]</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- What to Expect (Optional) -->
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse; margin: 0 0 24px;">
+                                            <tr>
+                                                <td>
+                                                    <p style="margin: 0 0 12px; color: #0f172a; font-size: 14px; font-weight: 700;">What to Expect</p>
+                                                    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                                        <tr>
+                                                            <td style="padding: 6px 0;">
+                                                                <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td style="width: 24px; vertical-align: top; padding-top: 4px;">
+                                                                            <div style="width: 6px; height: 6px; background-color: #64748b; border-radius: 50%;"></div>
+                                                                        </td>
+                                                                        <td style="color: #334155; font-size: 14px; line-height: 1.5;">[Expectation or impact point #1]</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 6px 0;">
+                                                                <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td style="width: 24px; vertical-align: top; padding-top: 4px;">
+                                                                            <div style="width: 6px; height: 6px; background-color: #64748b; border-radius: 50%;"></div>
+                                                                        </td>
+                                                                        <td style="color: #334155; font-size: 14px; line-height: 1.5;">[Expectation or impact point #2]</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding: 6px 0;">
+                                                                <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td style="width: 24px; vertical-align: top; padding-top: 4px;">
+                                                                            <div style="width: 6px; height: 6px; background-color: #64748b; border-radius: 50%;"></div>
+                                                                        </td>
+                                                                        <td style="color: #334155; font-size: 14px; line-height: 1.5;">[Expectation or impact point #3]</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- CTA Button (Optional) -->
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse; margin: 0 0 24px;">
+                                            <tr>
+                                                <td>
+                                                    <a href="https://status.vizeest.com" style="display: inline-block; padding: 12px 28px; background-color: #0f172a; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px; margin-right: 12px;">View Status Page</a>
+                                                    <a href="https://vizeest.com/help/[article]" style="display: inline-block; padding: 12px 28px; background-color: #f1f5f9; color: #334155; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px;">Learn More</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Support Info -->
+                                        <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f8fafc; border-radius: 8px;">
+                                            <tr>
+                                                <td style="padding: 20px;">
+                                                    <p style="margin: 0 0 8px; color: #0f172a; font-size: 14px; font-weight: 600;">Need Help?</p>
+                                                    <p style="margin: 0; color: #64748b; font-size: 14px; line-height: 1.6;">
+                                                        If you have questions or need assistance, contact our support team at
+                                                        <a href="mailto:support@vizeest.com" style="color: #4EBABD; text-decoration: none;">support@vizeest.com</a>
+                                                        or visit our <a href="https://vizeest.com/help" style="color: #4EBABD; text-decoration: none;">Help Center</a>.
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding: 32px 0 0;">
+                            <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                <tr>
+                                    <td style="text-align: center; padding-bottom: 16px;">
+                                        <a href="https://status.vizeest.com" style="color: #64748b; text-decoration: none; font-size: 13px; margin: 0 12px;">Status Page</a>
+                                        <a href="https://vizeest.com/help" style="color: #64748b; text-decoration: none; font-size: 13px; margin: 0 12px;">Help Center</a>
+                                        <a href="https://vizeest.com/contact" style="color: #64748b; text-decoration: none; font-size: 13px; margin: 0 12px;">Contact</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center; padding-bottom: 16px;">
+                                        <a href="https://vizeest.com/notifications/settings" style="color: #94a3b8; text-decoration: none; font-size: 12px;">Notification Settings</a>
+                                        <span style="color: #cbd5e1; margin: 0 8px;">|</span>
+                                        <a href="https://vizeest.com/unsubscribe?type=service&email=[Email]" style="color: #94a3b8; text-decoration: none; font-size: 12px;">Unsubscribe from Service Emails</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <p style="margin: 0; color: #94a3b8; font-size: 12px;">VizeEST, Inc. • 100 Enterprise Way, Suite 500 • San Francisco, CA 94105</p>
+                                        <p style="margin: 8px 0 0; color: #94a3b8; font-size: 12px;">© 2026 VizeEST. All rights reserved.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
