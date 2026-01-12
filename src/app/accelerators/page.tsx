@@ -52,9 +52,9 @@ export default function AcceleratorsPage() {
               <Image
                 src="/vizeest-name.svg"
                 alt="VizeEST"
-                width={90}
-                height={24}
-                className="h-6 w-auto"
+                width={72}
+                height={20}
+                className="h-5 w-auto"
               />
             </div>
             <span className="inline-block bg-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-4">
