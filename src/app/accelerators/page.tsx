@@ -50,7 +50,7 @@ export default function AcceleratorsPage() {
                 className="rounded-lg"
               />
               <Image
-                src="/vizeest-name.png"
+                src="/vizeest-name.svg"
                 alt="VizeEST"
                 width={90}
                 height={24}
