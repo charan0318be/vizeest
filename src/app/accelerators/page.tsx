@@ -52,9 +52,9 @@ export default function AcceleratorsPage() {
               <Image
                 src="/vizeest-name.png"
                 alt="VizeEST"
-                width={120}
-                height={32}
-                className="h-8 w-auto"
+                width={90}
+                height={24}
+                className="h-6 w-auto"
               />
             </div>
             <span className="inline-block bg-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-4">
@@ -102,7 +102,8 @@ export default function AcceleratorsPage() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Smith"
-                    className="w-full px-3.5 py-3 border border-[#e2e8f0] rounded-md text-[#0f172a] text-base outline-none transition-all focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/10 placeholder:text-[#94a3b8] bg-white"
+                    className="w-full px-3.5 py-3 border border-[#e2e8f0] rounded-md text-base outline-none transition-all focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/10"
+                    style={{ backgroundColor: '#ffffff', color: '#0f172a' }}
                   />
                 </div>
 
@@ -117,7 +118,8 @@ export default function AcceleratorsPage() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@company.com"
-                    className="w-full px-3.5 py-3 border border-[#e2e8f0] rounded-md text-[#0f172a] text-base outline-none transition-all focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/10 placeholder:text-[#94a3b8] bg-white"
+                    className="w-full px-3.5 py-3 border border-[#e2e8f0] rounded-md text-base outline-none transition-all focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/10"
+                    style={{ backgroundColor: '#ffffff', color: '#0f172a' }}
                   />
                 </div>
 
@@ -132,7 +134,8 @@ export default function AcceleratorsPage() {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="Your Steel Company"
-                    className="w-full px-3.5 py-3 border border-[#e2e8f0] rounded-md text-[#0f172a] text-base outline-none transition-all focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/10 placeholder:text-[#94a3b8] bg-white"
+                    className="w-full px-3.5 py-3 border border-[#e2e8f0] rounded-md text-base outline-none transition-all focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/10"
+                    style={{ backgroundColor: '#ffffff', color: '#0f172a' }}
                   />
                 </div>
 
@@ -146,7 +149,8 @@ export default function AcceleratorsPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="(555) 123-4567"
-                    className="w-full px-3.5 py-3 border border-[#e2e8f0] rounded-md text-[#0f172a] text-base outline-none transition-all focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/10 placeholder:text-[#94a3b8] bg-white"
+                    className="w-full px-3.5 py-3 border border-[#e2e8f0] rounded-md text-base outline-none transition-all focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/10"
+                    style={{ backgroundColor: '#ffffff', color: '#0f172a' }}
                   />
                 </div>
 
@@ -158,8 +162,8 @@ export default function AcceleratorsPage() {
                     name="companySize"
                     value={formData.companySize}
                     onChange={handleChange}
-                    className="w-full px-3.5 py-3 border border-[#e2e8f0] rounded-md text-[#0f172a] text-base outline-none transition-all focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/10 cursor-pointer appearance-none bg-no-repeat bg-[right_14px_center] pr-9"
-                    style={{ backgroundColor: '#ffffff', backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E\")" }}
+                    className="w-full px-3.5 py-3 border border-[#e2e8f0] rounded-md text-base outline-none transition-all focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/10 cursor-pointer appearance-none bg-no-repeat bg-[right_14px_center] pr-9"
+                    style={{ backgroundColor: '#ffffff', color: '#0f172a', backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E\")" }}
                   >
                     <option value="">Select team size</option>
                     <option value="1-10">1-10 employees</option>
