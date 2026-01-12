@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join VizeEST Accelerators Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4EBABD 0%, #2C7181 100%);
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+        }
+
+        .brand-name {
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .form-container {
+            padding: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #0f172a;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .form-group label span {
+            color: #dc2626;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 15px;
+            color: #0f172a;
+            background-color: #ffffff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4EBABD;
+            box-shadow: 0 0 0 3px rgba(78, 186, 189, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #94a3b8;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px 24px;
+            margin-top: 8px;
+            background: linear-gradient(135deg, #4EBABD 0%, #2C7181 100%);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(78, 186, 189, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .note {
+            text-align: center;
+            margin-top: 20px;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 6px;
+            border: 1px solid #fcd34d;
+        }
+
+        .note p {
+            color: #92400e;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .note strong {
+            color: #78350f;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 24px;
+            border-top: 1px solid #e2e8f0;
+            background: #f8fafc;
+        }
+
+        .footer p {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: #4EBABD;
+            text-decoration: none;
+        }
+
+        .benefits {
+            padding: 24px 24px 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .benefits-title {
+            color: #0f172a;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+            color: #475569;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .benefit-icon {
+            color: #4EBABD;
+            font-weight: bold;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* Success State */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 48px 32px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 36px;
+            color: #10b981;
+        }
+
+        .success-message h2 {
+            color: #0f172a;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .success-message p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .form-content {
+            display: block;
+        }
+
+        .form-content.hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div class="logo-container">
+                    <img src="https://vizeest.com/logo.png" alt="VizeEST" class="logo">
+                    <span class="brand-name">VizeEST</span>
+                </div>
+                <span class="badge">Accelerators Program</span>
+                <h1>Join the Next 25 Steel Fabricators</h1>
+                <p>Strengthen estimation discipline. Gain margin visibility.</p>
+            </div>
+
+            <div class="form-content" id="formContent">
+                <div class="benefits">
+                    <p class="benefits-title">What you'll receive:</p>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">&#10003;</span>
+                        <span>1-month full-access trial (cancel anytime)</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">&#10003;</span>
+                        <span>Accelerator-only entry pricing</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">&#10003;</span>
+                        <span>Priority support & complimentary add-ons</span>
+                    </div>
+                </div>
+
+                <form class="form-container" id="acceleratorForm">
+                    <div class="form-group">
+                        <label>Full Name <span>*</span></label>
+                        <input type="text" name="name" placeholder="John Smith" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Work Email <span>*</span></label>
+                        <input type="email" name="email" placeholder="john@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Company Name <span>*</span></label>
+                        <input type="text" name="company" placeholder="Your Steel Company" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" placeholder="(555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Company Size</label>
+                        <select name="company_size">
+                            <option value="">Select team size</option>
+                            <option value="1-10">1-10 employees</option>
+                            <option value="11-50">11-50 employees</option>
+                            <option value="51-200">51-200 employees</option>
+                            <option value="200+">200+ employees</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Request to Join</button>
+
+                    <div class="note">
+                        <p><strong>Limited to 25 companies.</strong> We'll reach out within 24 hours.</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                <div class="success-icon">&#10003;</div>
+                <h2>Thank You!</h2>
+                <p>Your interest in the Accelerators Program has been received. Our team will contact you within 24 hours to discuss next steps.</p>
+            </div>
+
+            <div class="footer">
+                <p><a href="https://vizeest.com">VizeEST</a> by Zenitude.ai</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('acceleratorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            // Log for tracking (replace with actual tracking/submission)
+            console.log('Accelerator Lead:', data);
+
+            // Show success message
+            document.getElementById('formContent').classList.add('hide');
+            document.getElementById('successMessage').classList.add('show');
+
+            // Optional: Send to backend
+            // fetch('/api/accelerator-signup', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(data)
+            // });
+        });
+    </script>
+</body>
+</html>
