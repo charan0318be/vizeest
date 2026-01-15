@@ -72,7 +72,7 @@
                             <table role="presentation" style="width: 100%; border-collapse: collapse; margin: 0 0 28px;">
                                 <tr>
                                     <td>
-                                        <a href="https://www.vizeest.com/accelerators" style="display: inline-block; padding: 14px 28px; background-color: #2C7181; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">Request a Demo</a>
+                                        <a href="https://api.vizeest.com/api/v1/campaign-leads/track-click?email={{Email}}&campaign_id={{Campaign ID}}&link=https://www.vizeest.com/accelerators" style="display: inline-block; padding: 14px 28px; background-color: #2C7181; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px;">Request a Demo</a>
                                     </td>
                                 </tr>
                             </table>
@@ -99,7 +99,7 @@
                                         <p style="margin: 0 0 8px; color: #94a3b8; font-size: 12px;">
                                             <a href="https://vizeest.com" style="color: #64748b; text-decoration: none;">vizeest.com</a>
                                         </p>
-                                        <a href="https://vizeest.com/unsubscribe?email={{Email}}" style="color: #94a3b8; text-decoration: none; font-size: 11px;">Unsubscribe</a>
+                                        <a href="https://www.vizeest.com/unsubscribe?email={{Email}}" style="color: #94a3b8; text-decoration: none; font-size: 11px;">Unsubscribe</a>
                                     </td>
                                 </tr>
                             </table>
@@ -110,5 +110,8 @@
             </td>
         </tr>
     </table>
+
+    <!-- Email Open Tracking Pixel -->
+    <img src="https://api.vizeest.com/api/v1/campaign-leads/track-open?email={{Email}}&campaign_id={{Campaign ID}}" width="1" height="1" alt="" style="display: block; width: 1px; height: 1px; border: 0;" />
 </body>
 </html>

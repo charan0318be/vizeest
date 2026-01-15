@@ -1,18 +1,98 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
+// API Base URL based on environment
+const getApiBaseUrl = () => {
+  if (process.env.NODE_ENV === 'development') {
+    return 'http://localhost:8000';
+  }
+  if (process.env.NEXT_PUBLIC_API_ENV === 'staging') {
+    return 'https://stag-api.vizeest.com';
+  }
+  return 'https://api.vizeest.com';
+};
+
+// Get or generate visitor ID for tracking
+const getVisitorId = (): string => {
+  if (typeof window === 'undefined') return '';
+
+  let visitorId = localStorage.getItem('vizeest_visitor_id');
+  if (!visitorId) {
+    visitorId = `visitor-${crypto.randomUUID()}`;
+    localStorage.setItem('vizeest_visitor_id', visitorId);
+  }
+  return visitorId;
+};
+
+// Track conversion event
+const trackConversion = async (conversionType: string, email: string, name: string) => {
+  try {
+    const visitorId = getVisitorId();
+    if (!visitorId) return;
+
+    await fetch(`${getApiBaseUrl()}/api/v1/conversions/track`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        visitor_id: visitorId,
+        conversion_type: conversionType,
+        email,
+        name,
+      }),
+    });
+  } catch {
+    // Silently fail - don't block form submission for tracking errors
+  }
+};
+
+// Security: Sanitize input to prevent XSS
+const sanitizeInput = (input: string): string => {
+  return input
+    .trim()
+    .replace(/[<>]/g, '') // Remove potential HTML tags
+    .slice(0, 1000); // Limit length (longer for message field)
+};
+
+// Security: Rate limiting
+const RATE_LIMIT_KEY = 'vizeest_contact_submissions';
+const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_WINDOW = 60000; // 1 minute
+
+const checkRateLimit = (): boolean => {
+  if (typeof window === 'undefined') return true;
+
+  const now = Date.now();
+  const submissions = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]') as number[];
+  const recentSubmissions = submissions.filter((t) => now - t < RATE_LIMIT_WINDOW);
+
+  if (recentSubmissions.length >= RATE_LIMIT_MAX) {
+    return false;
+  }
+
+  recentSubmissions.push(now);
+  localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(recentSubmissions));
+  return true;
+};
+
+// Security: Generate request token
+const generateRequestToken = (): string => {
+  const timestamp = Date.now().toString(36);
+  const random = Math.random().toString(36).substring(2, 15);
+  return `${timestamp}-${random}`;
+};
+
 const contactReasons = [
-  'Request a Demo',
-  'Pricing Inquiry',
-  'Technical Support',
-  'Partnership Opportunity',
-  'Career Inquiry',
-  'Other',
+  { label: 'Request a Demo', value: 'request_demo' },
+  { label: 'Pricing Inquiry', value: 'pricing_inquiry' },
+  { label: 'Technical Support', value: 'technical_support' },
+  { label: 'Partnership Opportunity', value: 'partnership_opportunity' },
+  { label: 'Career Inquiry', value: 'career_inquiry' },
+  { label: 'Other', value: 'other' },
 ];
 
 export default function ContactPage() {
@@ -33,23 +113,171 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  // Security: Honeypot field (hidden from users, filled by bots)
+  const [honeypot, setHoneypot] = useState('');
+
+  // Security: Track form load time (bots submit too fast)
+  const formLoadTime = useRef(Date.now());
+  const MIN_SUBMIT_TIME = 3000; // 3 seconds minimum
+
+  const validateForm = () => {
+    const errors: Record<string, string> = {};
+
+    // First name validation
+    if (!formData.firstName.trim()) {
+      errors.firstName = 'First name is required';
+    } else if (formData.firstName.trim().length < 2) {
+      errors.firstName = 'First name must be at least 2 characters';
+    }
+
+    // Last name validation
+    if (!formData.lastName.trim()) {
+      errors.lastName = 'Last name is required';
+    } else if (formData.lastName.trim().length < 2) {
+      errors.lastName = 'Last name must be at least 2 characters';
+    }
+
+    // Email validation (enterprise - block free email domains)
+    const freeEmailDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com', 'icloud.com', 'mail.com', 'protonmail.com'];
+    if (!formData.email.trim()) {
+      errors.email = 'Work email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = 'Please enter a valid email address';
+    } else {
+      const emailDomain = formData.email.split('@')[1]?.toLowerCase();
+      if (emailDomain && freeEmailDomains.includes(emailDomain)) {
+        errors.email = 'Please use your work email address';
+      }
+    }
+
+    // Company validation
+    if (!formData.company.trim()) {
+      errors.company = 'Company is required';
+    } else if (formData.company.trim().length < 2) {
+      errors.company = 'Company name must be at least 2 characters';
+    }
+
+    // Phone validation (optional but must be valid if provided)
+    if (formData.phone && !/^[\d\s\-\(\)\+]+$/.test(formData.phone)) {
+      errors.phone = 'Please enter a valid phone number';
+    } else if (formData.phone && formData.phone.replace(/[\s\-\(\)\+]/g, '').length < 7) {
+      errors.phone = 'Phone number seems too short';
+    }
+
+    // Reason validation
+    if (!formData.reason) {
+      errors.reason = 'Please select a reason';
+    }
+
+    // Message validation
+    if (!formData.message.trim()) {
+      errors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      errors.message = 'Please provide more details (at least 10 characters)';
+    }
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+
+    // Security: Check honeypot field (bots fill hidden fields)
+    if (honeypot) {
+      // Silently reject - don't give bots feedback
+      setIsSubmitted(true);
+      return;
+    }
+
+    // Security: Check if form was submitted too quickly (bot behavior)
+    const timeSinceLoad = Date.now() - formLoadTime.current;
+    if (timeSinceLoad < MIN_SUBMIT_TIME) {
+      setError('Please take a moment to review the form before submitting.');
+      return;
+    }
+
+    // Security: Rate limiting
+    if (!checkRateLimit()) {
+      setError('Too many submission attempts. Please wait a minute and try again.');
+      return;
+    }
+
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const apiUrl = `${getApiBaseUrl()}/api/v1/contacts/submit`;
+      const requestToken = generateRequestToken();
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      // Sanitize all user inputs
+      const sanitizedData = {
+        form_source: 'contact_page',
+        form_name: 'Contact Us Form',
+        first_name: sanitizeInput(formData.firstName),
+        last_name: sanitizeInput(formData.lastName),
+        work_email: sanitizeInput(formData.email).toLowerCase(),
+        company: sanitizeInput(formData.company),
+        phone_number: formData.phone ? sanitizeInput(formData.phone) : undefined,
+        inquiry_type: formData.reason,
+        message: sanitizeInput(formData.message),
+      };
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Request-Token': requestToken,
+        },
+        body: JSON.stringify(sanitizedData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || errorData.detail || 'Failed to submit. Please try again.');
+      }
+
+      // Track conversion (non-blocking)
+      const fullName = `${formData.firstName} ${formData.lastName}`.trim();
+      trackConversion('demo_request', formData.email, fullName);
+
+      setIsSubmitted(true);
+    } catch (err) {
+      if (err instanceof Error) {
+        if (err.message === 'Failed to fetch') {
+          setError('Unable to connect to server. Please check your internet connection and try again.');
+        } else {
+          setError(err.message);
+        }
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
+    // Clear field error when user starts typing
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
   };
 
   return (
@@ -122,6 +350,20 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Security: Honeypot field - hidden from users, filled by bots */}
+                    <div style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }} aria-hidden="true">
+                      <label htmlFor="contact_website">Website</label>
+                      <input
+                        type="text"
+                        id="contact_website"
+                        name="contact_website"
+                        value={honeypot}
+                        onChange={(e) => setHoneypot(e.target.value)}
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </div>
+
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className={`scroll-fade-up ${formVisible ? 'animate-in' : ''}`} style={{ transitionDelay: '0.1s' }}>
                         <label htmlFor="firstName" className={`block text-sm font-medium mb-2 ${
@@ -133,16 +375,18 @@ export default function ContactPage() {
                           type="text"
                           id="firstName"
                           name="firstName"
-                          required
                           value={formData.firstName}
                           onChange={handleChange}
                           className={`w-full px-4 py-3 rounded-lg border outline-none transition-colors ${
-                            theme === 'dark'
-                              ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                              : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                          }`}
+                            fieldErrors.firstName
+                              ? 'border-[#dc2626]'
+                              : theme === 'dark'
+                                ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                                : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                          } ${theme === 'dark' ? 'bg-[#1E1E1E] text-white' : 'bg-white text-[#121212]'}`}
                           placeholder="John"
                         />
+                        {fieldErrors.firstName && <p className="text-[#dc2626] text-xs mt-1">{fieldErrors.firstName}</p>}
                       </div>
                       <div className={`scroll-fade-up ${formVisible ? 'animate-in' : ''}`} style={{ transitionDelay: '0.15s' }}>
                         <label htmlFor="lastName" className={`block text-sm font-medium mb-2 ${
@@ -154,16 +398,18 @@ export default function ContactPage() {
                           type="text"
                           id="lastName"
                           name="lastName"
-                          required
                           value={formData.lastName}
                           onChange={handleChange}
                           className={`w-full px-4 py-3 rounded-lg border outline-none transition-colors ${
-                            theme === 'dark'
-                              ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                              : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                          }`}
+                            fieldErrors.lastName
+                              ? 'border-[#dc2626]'
+                              : theme === 'dark'
+                                ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                                : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                          } ${theme === 'dark' ? 'bg-[#1E1E1E] text-white' : 'bg-white text-[#121212]'}`}
                           placeholder="Doe"
                         />
+                        {fieldErrors.lastName && <p className="text-[#dc2626] text-xs mt-1">{fieldErrors.lastName}</p>}
                       </div>
                     </div>
 
@@ -177,16 +423,18 @@ export default function ContactPage() {
                         type="email"
                         id="email"
                         name="email"
-                        required
                         value={formData.email}
                         onChange={handleChange}
                         className={`w-full px-4 py-3 rounded-lg border outline-none transition-colors ${
-                          theme === 'dark'
-                            ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                            : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                        }`}
+                          fieldErrors.email
+                            ? 'border-[#dc2626]'
+                            : theme === 'dark'
+                              ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                              : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                        } ${theme === 'dark' ? 'bg-[#1E1E1E] text-white' : 'bg-white text-[#121212]'}`}
                         placeholder="john@company.com"
                       />
+                      {fieldErrors.email && <p className="text-[#dc2626] text-xs mt-1">{fieldErrors.email}</p>}
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-6">
@@ -200,16 +448,18 @@ export default function ContactPage() {
                           type="text"
                           id="company"
                           name="company"
-                          required
                           value={formData.company}
                           onChange={handleChange}
                           className={`w-full px-4 py-3 rounded-lg border outline-none transition-colors ${
-                            theme === 'dark'
-                              ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                              : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                          }`}
+                            fieldErrors.company
+                              ? 'border-[#dc2626]'
+                              : theme === 'dark'
+                                ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                                : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                          } ${theme === 'dark' ? 'bg-[#1E1E1E] text-white' : 'bg-white text-[#121212]'}`}
                           placeholder="Company Name"
                         />
+                        {fieldErrors.company && <p className="text-[#dc2626] text-xs mt-1">{fieldErrors.company}</p>}
                       </div>
                       <div className={`scroll-fade-up ${formVisible ? 'animate-in' : ''}`} style={{ transitionDelay: '0.3s' }}>
                         <label htmlFor="phone" className={`block text-sm font-medium mb-2 ${
@@ -224,12 +474,15 @@ export default function ContactPage() {
                           value={formData.phone}
                           onChange={handleChange}
                           className={`w-full px-4 py-3 rounded-lg border outline-none transition-colors ${
-                            theme === 'dark'
-                              ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                              : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                          }`}
+                            fieldErrors.phone
+                              ? 'border-[#dc2626]'
+                              : theme === 'dark'
+                                ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                                : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                          } ${theme === 'dark' ? 'bg-[#1E1E1E] text-white' : 'bg-white text-[#121212]'}`}
                           placeholder="+1 (555) 000-0000"
                         />
+                        {fieldErrors.phone && <p className="text-[#dc2626] text-xs mt-1">{fieldErrors.phone}</p>}
                       </div>
                     </div>
 
@@ -242,22 +495,24 @@ export default function ContactPage() {
                       <select
                         id="reason"
                         name="reason"
-                        required
                         value={formData.reason}
                         onChange={handleChange}
                         className={`w-full px-4 py-3 rounded-lg border outline-none transition-colors ${
-                          theme === 'dark'
-                            ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                            : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                        }`}
+                          fieldErrors.reason
+                            ? 'border-[#dc2626]'
+                            : theme === 'dark'
+                              ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                              : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                        } ${theme === 'dark' ? 'bg-[#1E1E1E] text-white' : 'bg-white text-[#121212]'}`}
                       >
                         <option value="">Select a reason</option>
                         {contactReasons.map((reason) => (
-                          <option key={reason} value={reason}>
-                            {reason}
+                          <option key={reason.value} value={reason.value}>
+                            {reason.label}
                           </option>
                         ))}
                       </select>
+                      {fieldErrors.reason && <p className="text-[#dc2626] text-xs mt-1">{fieldErrors.reason}</p>}
                     </div>
 
                     <div className={`scroll-fade-up ${formVisible ? 'animate-in' : ''}`} style={{ transitionDelay: '0.4s' }}>
@@ -269,18 +524,26 @@ export default function ContactPage() {
                       <textarea
                         id="message"
                         name="message"
-                        required
                         rows={4}
                         value={formData.message}
                         onChange={handleChange}
                         className={`w-full px-4 py-3 rounded-lg border outline-none transition-colors resize-none ${
-                          theme === 'dark'
-                            ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                            : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
-                        }`}
+                          fieldErrors.message
+                            ? 'border-[#dc2626]'
+                            : theme === 'dark'
+                              ? 'bg-[#1E1E1E] border-[#2D2D2D] text-white focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                              : 'bg-white border-[#E5E7EB] text-[#121212] focus:border-[#4EBABD] focus:ring-2 focus:ring-[#4EBABD]/20'
+                        } ${theme === 'dark' ? 'bg-[#1E1E1E] text-white' : 'bg-white text-[#121212]'}`}
                         placeholder="Tell us about your project and estimation needs..."
                       />
+                      {fieldErrors.message && <p className="text-[#dc2626] text-xs mt-1">{fieldErrors.message}</p>}
                     </div>
+
+                    {error && (
+                      <div className="p-3 bg-[#fef2f2] border border-[#fecaca] rounded-lg">
+                        <p className="text-[#dc2626] text-sm">{error}</p>
+                      </div>
+                    )}
 
                     <button
                       type="submit"
