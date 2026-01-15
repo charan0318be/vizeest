@@ -27,6 +27,7 @@ const nextConfig: NextConfig = {
   // Environment variables available at build time
   env: {
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://vizeest.com',
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'https://stag-api.vizeest.us',
   },
 
   // Compression
