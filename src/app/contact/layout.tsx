@@ -46,23 +46,16 @@ const contactJsonLd = {
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '+1-415-555-0123',
+        telephone: '+1-784-277-0721',
         contactType: 'sales',
         areaServed: 'US',
         availableLanguage: 'English',
       },
       {
         '@type': 'ContactPoint',
-        telephone: '+1-212-555-0123',
+        telephone: '+1-784-277-0721',
         contactType: 'customer support',
         areaServed: 'US',
-        availableLanguage: 'English',
-      },
-      {
-        '@type': 'ContactPoint',
-        telephone: '+44-20-7123-4567',
-        contactType: 'sales',
-        areaServed: 'GB',
         availableLanguage: 'English',
       },
     ],

@@ -17,7 +17,6 @@ const navigation = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [showBanner, setShowBanner] = useState(true);
   const { theme, toggleTheme } = useTheme();
   const { openModal } = useDemoModal();
 
@@ -31,42 +30,8 @@ export default function Header() {
 
   return (
     <>
-      {/* Christmas Promo Banner */}
-      {showBanner && (
-        <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#c41e3a] via-[#dc143c] to-[#228b22] text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-center gap-3 relative">
-            <span className="text-lg">🎄</span>
-            <p className="text-sm font-medium text-center">
-              <span className="hidden sm:inline">🎅 Holiday Special: </span>
-              <span className="font-bold">Get 25% OFF</span> on all annual plans!
-            </p>
-            <Link
-              href="/#pricing"
-              className="hidden sm:inline-flex items-center gap-1 bg-white text-[#c41e3a] text-xs font-bold px-3 py-1 rounded-full hover:bg-white/90 transition-colors"
-            >
-              Claim Now
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-            <span className="text-lg">🎁</span>
-            <button
-              onClick={() => setShowBanner(false)}
-              className="absolute right-2 sm:right-4 p-1 hover:bg-white/20 rounded transition-colors"
-              aria-label="Close banner"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
-
       <header
-        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
-          showBanner ? 'top-[44px]' : 'top-0'
-        } ${
+        className={`fixed left-0 right-0 z-50 transition-all duration-300 top-0 ${
           isScrolled
             ? theme === 'dark'
               ? 'bg-[#121212]/95 backdrop-blur-md shadow-lg'
@@ -147,18 +112,6 @@ export default function Header() {
               )}
             </button>
 
-            <Link
-              href="/contact"
-              className={`text-sm font-medium transition-colors ${
-                isScrolled
-                  ? theme === 'dark'
-                    ? 'text-gray-300 hover:text-white'
-                    : 'text-[#6B7280] hover:text-[#121212]'
-                  : 'text-white/80 hover:text-white'
-              }`}
-            >
-              Sign In
-            </Link>
             <button
               onClick={openModal}
               className="btn btn-primary text-sm py-2.5 px-5"
@@ -252,20 +205,10 @@ export default function Header() {
               </Link>
             ))}
             <div
-              className={`border-t mt-4 pt-4 space-y-2 ${
+              className={`border-t mt-4 pt-4 ${
                 theme === 'dark' ? 'border-[#2D2D2D]' : 'border-[#E5E7EB]'
               }`}
             >
-              <Link
-                href="/contact"
-                className={`block py-3 px-4 text-center ${
-                  theme === 'dark'
-                    ? 'text-gray-300 hover:text-white'
-                    : 'text-[#6B7280] hover:text-[#121212]'
-                }`}
-              >
-                Sign In
-              </Link>
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);

@@ -589,7 +589,7 @@ export default function ContactPage() {
                   <div className="space-y-6">
                     {[
                       { icon: 'email', label: 'Email', value: 'sales@vizeest.com', href: 'mailto:sales@vizeest.com' },
-                      { icon: 'phone', label: 'Sales', value: '+1 (415) 555-0123', href: 'tel:+14155550123' },
+                      { icon: 'phone', label: 'Sales', value: '+1 (784) 277-0721', href: 'tel:+17842770721' },
                       { icon: 'support', label: 'Support', value: 'support@vizeest.com', href: 'mailto:support@vizeest.com' },
                     ].map((contact, index) => (
                       <div
