@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { DemoModalProvider } from '@/context/DemoModalContext';
 import DemoModal from '@/components/DemoModal';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import './globals.css';
 
 const inter = Inter({
@@ -162,12 +163,14 @@ const jsonLd = {
         height: 512,
       },
       sameAs: [
-        'https://twitter.com/vizeest',
-        'https://linkedin.com/company/vizeest',
+        'https://x.com/Vize_Est',
+        'https://linkedin.com/company/VizeEst',
+        'https://facebook.com/VizeEst',
+        'https://instagram.com/Vizeone_official',
       ],
       contactPoint: {
         '@type': 'ContactPoint',
-        telephone: '+1-800-VIZEEST',
+        telephone: '+1-784-277-0721',
         contactType: 'sales',
         availableLanguage: ['English'],
       },
@@ -294,6 +297,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
+        <GoogleAnalytics />
         <ThemeProvider>
           <DemoModalProvider>
             {children}
