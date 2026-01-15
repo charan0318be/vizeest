@@ -4,14 +4,18 @@ import { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// API Base URL based on environment
+// API Base URL from environment variable
 const getApiBaseUrl = () => {
+  // Use environment variable if set
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    // Remove trailing slash if present
+    return process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '');
+  }
+  // Fallback for development
   if (process.env.NODE_ENV === 'development') {
     return 'http://localhost:8000';
   }
-  if (process.env.NEXT_PUBLIC_API_ENV === 'staging') {
-    return 'https://stag-api.vizeest.com';
-  }
+  // Default to production
   return 'https://api.vizeest.com';
 };
 
