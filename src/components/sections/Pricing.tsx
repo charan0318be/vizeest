@@ -6,9 +6,10 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const plans = [
   {
-    name: 'Professional',
-    description: 'Everything you need per user',
-    price: 1999,
+    name: 'Founder Accelerator Program',
+    description: 'Limited time offer for early adopters',
+    price: 499,
+    originalPrice: 1999,
     features: [
       'Unlimited drawings',
       'Unlimited storage',
@@ -96,10 +97,10 @@ export default function Pricing() {
                 <div className={`relative h-full rounded-2xl p-8 ${
                   theme === 'dark' ? 'bg-[#121212]' : 'bg-white'
                 }`}>
-                  {/* Popular Badge */}
+                  {/* Limited Offer Badge */}
                   <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 z-20">
                     <div className="bg-gradient-to-r from-[#4EBABD] to-[#2C7181] text-white text-sm font-bold px-5 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg whitespace-nowrap">
-                      Most Popular
+                      Limited Offer - 75% OFF
                     </div>
                   </div>
 
@@ -115,6 +116,11 @@ export default function Pricing() {
                   </div>
 
                   <div className="text-center mb-6">
+                    {plan.originalPrice && (
+                      <div className={`text-2xl line-through mb-1 ${theme === 'dark' ? 'text-[#6B7280]' : 'text-[#9CA3AF]'}`}>
+                        ${plan.originalPrice.toLocaleString()}
+                      </div>
+                    )}
                     <div className="flex items-baseline justify-center gap-1">
                       <span className="text-4xl font-bold gradient-text">
                         ${plan.price?.toLocaleString()}
@@ -142,7 +148,7 @@ export default function Pricing() {
                     onClick={openModal}
                     className="w-full py-3 px-6 rounded-xl font-medium transition-all bg-gradient-to-r from-[#4EBABD] to-[#2C7181] text-white hover:opacity-90 shadow-lg hover:shadow-xl"
                   >
-                    Start Free Trial
+                    Register Here
                   </button>
                 </div>
               ) : (

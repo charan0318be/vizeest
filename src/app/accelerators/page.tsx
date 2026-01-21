@@ -307,10 +307,24 @@ export default function AcceleratorsPage() {
                 </div>
               </div>
 
+              {/* Pricing Section */}
+              <div className="px-8 py-6 border-b border-[#e2e8f0] bg-gradient-to-r from-[#2C7181] to-[#4EBABD]">
+                <div className="text-center">
+                  <p className="text-white/80 text-xs uppercase tracking-wide mb-2">Founder Accelerator Program</p>
+                  <div className="flex items-center justify-center gap-3 mb-2">
+                    <span className="text-white/60 text-xl line-through">$1,999</span>
+                    <span className="text-white text-4xl font-bold">$499</span>
+                  </div>
+                  <p className="text-white/90 text-sm font-medium">
+                    Limited spots for early adopters
+                  </p>
+                </div>
+              </div>
+
               {/* Program Details */}
               <div className="px-8 py-5 border-b border-[#e2e8f0] bg-[#fefce8]">
                 <p className="text-[#713f12] text-sm text-center font-medium">
-                  Accelerators Program: 1-month full-access trial for the next 25 steel fabricators
+                  1-month full-access trial for the next 25 steel fabricators
                 </p>
               </div>
 
@@ -442,7 +456,7 @@ export default function AcceleratorsPage() {
                       Processing...
                     </span>
                   ) : (
-                    'Request a Demo'
+                    'Register Here'
                   )}
                 </button>
               </form>
