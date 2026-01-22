@@ -7,10 +7,12 @@ import DualInterface from '@/components/sections/DualInterface';
 import CollaborationInsights from '@/components/sections/CollaborationInsights';
 import EnterpriseOutputs from '@/components/sections/EnterpriseOutputs';
 import ForTeams from '@/components/sections/ForTeams';
-import EnterpriseReadiness from '@/components/sections/EnterpriseReadiness';
 import QualityControl from '@/components/sections/QualityControl';
+import FeaturesGlimpse from '@/components/sections/FeaturesGlimpse';
+import SolutionsGlimpse from '@/components/sections/SolutionsGlimpse';
+import EnterpriseGlimpse from '@/components/sections/EnterpriseGlimpse';
+import PricingGlimpse from '@/components/sections/PricingGlimpse';
 import WhyChoose from '@/components/sections/WhyChoose';
-import Pricing from '@/components/sections/Pricing';
 
 export default function Home() {
   return (
@@ -23,11 +25,13 @@ export default function Home() {
         <DualInterface />
         <CollaborationInsights />
         <EnterpriseOutputs />
+        <FeaturesGlimpse />
+        <SolutionsGlimpse />
         <ForTeams />
-        <EnterpriseReadiness />
+        <EnterpriseGlimpse />
         <QualityControl />
         <WhyChoose />
-        <Pricing />
+        <PricingGlimpse />
       </main>
       <Footer />
     </>

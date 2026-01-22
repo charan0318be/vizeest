@@ -7,9 +7,10 @@ import { useTheme } from '@/context/ThemeContext';
 import { useDemoModal } from '@/context/DemoModalContext';
 
 const navigation = [
-  { name: 'Features', href: '/#features' },
-  { name: 'Solutions', href: '/#solutions' },
-  { name: 'Enterprise', href: '/#enterprise' },
+  { name: 'Features', href: '/features' },
+  { name: 'Solutions', href: '/solutions' },
+  { name: 'Enterprise', href: '/enterprise' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];

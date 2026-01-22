@@ -4,6 +4,8 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import { DemoModalProvider } from '@/context/DemoModalContext';
 import DemoModal from '@/components/DemoModal';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import Contentsquare from '@/components/Contentsquare';
+import VizeestTracking from '@/components/VizeestTracking';
 import './globals.css';
 
 const inter = Inter({
@@ -248,6 +250,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://t.contentsquare.net" />
+        <link rel="dns-prefetch" href="https://stag-api.vizeest.us" />
 
         {/* Security Headers */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
@@ -298,6 +302,8 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <GoogleAnalytics />
+        <Contentsquare />
+        <VizeestTracking />
         <ThemeProvider>
           <DemoModalProvider>
             {children}
