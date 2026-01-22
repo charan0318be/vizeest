@@ -7,7 +7,7 @@ import Link from 'next/link';
 const features = [
   {
     title: 'Intelligent Detection',
-    description: 'AI-powered beam and column detection from PDF and CAD drawings.',
+    description: 'Intelligent beam and column detection from PDF and CAD drawings.',
   },
   {
     title: 'Automated Take-Off',

@@ -46,7 +46,7 @@ export default function TermsOfService() {
               VizeEST is a Software-as-a-Service (SaaS) platform that provides:
             </p>
             <ul className={`list-disc pl-6 mt-4 space-y-2 ${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>
-              <li>AI-powered structural steel beam detection and analysis</li>
+              <li>Intelligent structural steel beam detection and analysis</li>
               <li>Automated material take-offs and bill of materials generation</li>
               <li>PDF and CAD drawing processing and annotation</li>
               <li>Project estimation and cost calculation tools</li>

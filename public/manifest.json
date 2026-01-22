@@ -1,7 +1,7 @@
 {
-  "name": "VizeEST - AI-Powered Steel Estimation",
+  "name": "VizeEST - Intelligent Steel Estimation",
   "short_name": "VizeEST",
-  "description": "Enterprise structural steel estimation platform with AI-powered beam detection and automated material take-offs.",
+  "description": "Enterprise structural steel estimation platform with intelligent beam detection and automated material take-offs.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#121212",

@@ -18,7 +18,7 @@ const plans = [
       'Automated material take-offs',
       'Excel & CSV exports',
       'Real-time collaboration',
-      'Priority email support',
+      '24/7 phone support',
     ],
     popular: true,
   },

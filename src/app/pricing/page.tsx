@@ -21,7 +21,7 @@ const plans = [
       'Automated material take-offs',
       'Excel & CSV exports',
       'Real-time collaboration',
-      'Priority email support',
+      '24/7 phone support',
       'Custom report templates',
       'API access',
     ],
@@ -92,7 +92,7 @@ const comparisonFeatures = [
   { name: 'SSO/SAML', founder: false, enterprise: true },
   { name: 'Dedicated account manager', founder: false, enterprise: true },
   { name: 'SLA guarantee', founder: false, enterprise: true },
-  { name: '24/7 phone support', founder: false, enterprise: true },
+  { name: '24/7 phone support', founder: true, enterprise: true },
   { name: 'Custom training', founder: false, enterprise: true },
 ];
 
