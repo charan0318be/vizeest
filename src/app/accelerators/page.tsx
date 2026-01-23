@@ -118,17 +118,11 @@ export default function AcceleratorsPage() {
       errors.name = 'Name must be at least 2 characters';
     }
 
-    // Email validation (enterprise - block free email domains)
-    const freeEmailDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com', 'icloud.com', 'mail.com', 'protonmail.com'];
+    // Email validation
     if (!formData.email.trim()) {
-      errors.email = 'Work email is required';
+      errors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       errors.email = 'Please enter a valid email address';
-    } else {
-      const emailDomain = formData.email.split('@')[1]?.toLowerCase();
-      if (emailDomain && freeEmailDomains.includes(emailDomain)) {
-        errors.email = 'Please use your work email address';
-      }
     }
 
     // Company validation
@@ -307,20 +301,6 @@ export default function AcceleratorsPage() {
                 </div>
               </div>
 
-              {/* Pricing Section */}
-              <div className="px-8 py-6 border-b border-[#e2e8f0] bg-gradient-to-r from-[#2C7181] to-[#4EBABD]">
-                <div className="text-center">
-                  <p className="text-white/80 text-xs uppercase tracking-wide mb-2">Founder Accelerator Program</p>
-                  <div className="flex items-center justify-center gap-3 mb-2">
-                    <span className="text-white/60 text-xl line-through">$1,999</span>
-                    <span className="text-white text-4xl font-bold">$499</span>
-                  </div>
-                  <p className="text-white/90 text-sm font-medium">
-                    Limited spots for early adopters
-                  </p>
-                </div>
-              </div>
-
               {/* Program Details */}
               <div className="px-8 py-5 border-b border-[#e2e8f0] bg-[#fefce8]">
                 <p className="text-[#713f12] text-sm text-center font-medium">
@@ -362,14 +342,14 @@ export default function AcceleratorsPage() {
 
                 <div>
                   <label className="block text-[#2C7181] text-sm font-medium mb-1.5">
-                    Work Email <span className="text-[#dc2626]">*</span>
+                    Email <span className="text-[#dc2626]">*</span>
                   </label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="john@steelcompany.com"
+                    placeholder="john@example.com"
                     className={`w-full px-4 py-3 border rounded-md text-sm outline-none transition-all focus:border-[#2C7181] focus:ring-2 focus:ring-[#2C7181]/10 ${fieldErrors.email ? 'border-[#dc2626]' : 'border-[#d1d5db]'}`}
                     style={{ backgroundColor: '#ffffff', color: '#2C7181' }}
                   />
