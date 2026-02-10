@@ -29,7 +29,7 @@ const qualityFeatures = [
       </svg>
     ),
     title: 'Conflict Detection',
-    description: 'Automatic identification of overlapping members, dimension conflicts, and specification mismatches.',
+    description: 'Automatic identification of overlapping members, dimension conflicts, and  mismatches.',
     stats: 'Real-time',
     statsLabel: 'Detection',
   },

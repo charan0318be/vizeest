@@ -61,7 +61,7 @@ export default function Header() {
                   : 'text-white'
               }`}
             >
-              Vize<span className="gradient-text">EST</span>
+              Vize<span className="gradient-text">Est</span>
             </span>
           </Link>
 
