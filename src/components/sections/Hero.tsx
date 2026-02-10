@@ -64,7 +64,7 @@ export default function Hero() {
             <p className="text-base sm:text-lg text-white/50 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               Upload your PDFs. Get accurate material take-offs in minutes.
               <br />
-              <span className="text-white/70">Win more bids with AI-powered steel estimation.</span>
+              <span className="text-white/70">Win more bids with steel estimation.</span>
             </p>
 
             {/* CTA Buttons */}

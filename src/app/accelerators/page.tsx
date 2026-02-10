@@ -19,6 +19,42 @@ const getApiBaseUrl = () => {
   return 'https://api.vizeest.com';
 };
 
+// Country codes for phone number dropdown
+const COUNTRY_CODES = [
+  { code: '+1', label: '🇺🇸 +1', country: 'US' },
+  { code: '+1', label: '🇨🇦 +1', country: 'CA' },
+  { code: '+44', label: '🇬🇧 +44', country: 'GB' },
+  { code: '+91', label: '🇮🇳 +91', country: 'IN' },
+  { code: '+61', label: '🇦🇺 +61', country: 'AU' },
+  { code: '+49', label: '🇩🇪 +49', country: 'DE' },
+  { code: '+33', label: '🇫🇷 +33', country: 'FR' },
+  { code: '+81', label: '🇯🇵 +81', country: 'JP' },
+  { code: '+86', label: '🇨🇳 +86', country: 'CN' },
+  { code: '+82', label: '🇰🇷 +82', country: 'KR' },
+  { code: '+55', label: '🇧🇷 +55', country: 'BR' },
+  { code: '+52', label: '🇲🇽 +52', country: 'MX' },
+  { code: '+971', label: '🇦🇪 +971', country: 'AE' },
+  { code: '+966', label: '🇸🇦 +966', country: 'SA' },
+  { code: '+65', label: '🇸🇬 +65', country: 'SG' },
+  { code: '+64', label: '🇳🇿 +64', country: 'NZ' },
+  { code: '+27', label: '🇿🇦 +27', country: 'ZA' },
+  { code: '+234', label: '🇳🇬 +234', country: 'NG' },
+  { code: '+254', label: '🇰🇪 +254', country: 'KE' },
+  { code: '+39', label: '🇮🇹 +39', country: 'IT' },
+  { code: '+34', label: '🇪🇸 +34', country: 'ES' },
+  { code: '+31', label: '🇳🇱 +31', country: 'NL' },
+  { code: '+46', label: '🇸🇪 +46', country: 'SE' },
+  { code: '+47', label: '🇳🇴 +47', country: 'NO' },
+  { code: '+45', label: '🇩🇰 +45', country: 'DK' },
+  { code: '+48', label: '🇵🇱 +48', country: 'PL' },
+  { code: '+90', label: '🇹🇷 +90', country: 'TR' },
+  { code: '+62', label: '🇮🇩 +62', country: 'ID' },
+  { code: '+60', label: '🇲🇾 +60', country: 'MY' },
+  { code: '+63', label: '🇵🇭 +63', country: 'PH' },
+  { code: '+66', label: '🇹🇭 +66', country: 'TH' },
+  { code: '+84', label: '🇻🇳 +84', country: 'VN' },
+];
+
 // Security: Sanitize input to prevent XSS
 const sanitizeInput = (input: string): string => {
   return input
@@ -93,6 +129,7 @@ export default function AcceleratorsPage() {
     name: '',
     email: '',
     company: '',
+    countryCode: '+1',
     phone: '',
     companySize: '',
   });
@@ -132,11 +169,23 @@ export default function AcceleratorsPage() {
       errors.company = 'Company name must be at least 2 characters';
     }
 
-    // Phone validation (optional but must be valid if provided)
-    if (formData.phone && !/^[\d\s\-\(\)\+]+$/.test(formData.phone)) {
-      errors.phone = 'Please enter a valid phone number';
-    } else if (formData.phone && formData.phone.replace(/[\s\-\(\)\+]/g, '').length < 7) {
-      errors.phone = 'Phone number seems too short';
+    // Phone validation (mandatory)
+    if (!formData.phone.trim()) {
+      errors.phone = 'Phone number is required';
+    } else if (!/^[\d\s\-\(\)]+$/.test(formData.phone)) {
+      errors.phone = 'Phone number can only contain digits, spaces, hyphens, and parentheses';
+    } else {
+      const digitsOnly = formData.phone.replace(/[\s\-\(\)]/g, '');
+      if (digitsOnly.length < 7) {
+        errors.phone = 'Phone number must be at least 7 digits';
+      } else if (digitsOnly.length > 15) {
+        errors.phone = 'Phone number must not exceed 15 digits';
+      }
+    }
+
+    // Country code validation
+    if (!formData.countryCode) {
+      errors.countryCode = 'Country code is required';
     }
 
     setFieldErrors(errors);
@@ -184,7 +233,7 @@ export default function AcceleratorsPage() {
         full_name: sanitizeInput(formData.name),
         work_email: sanitizeInput(formData.email).toLowerCase(),
         company_name: sanitizeInput(formData.company),
-        phone_number: formData.phone ? sanitizeInput(formData.phone) : undefined,
+        phone_number: `${formData.countryCode} ${sanitizeInput(formData.phone)}`,
         team_size: formData.companySize || undefined,
         campaign_id: 'accelerators_2026',
         campaign_name: 'VizeEST Accelerators Program',
@@ -372,46 +421,68 @@ export default function AcceleratorsPage() {
                   {fieldErrors.company && <p className="text-[#dc2626] text-xs mt-1">{fieldErrors.company}</p>}
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[#2C7181] text-sm font-medium mb-1.5">
-                      Phone Number
-                    </label>
+                <div>
+                  <label className="block text-[#2C7181] text-sm font-medium mb-1.5">
+                    Phone Number <span className="text-[#dc2626]">*</span>
+                  </label>
+                  <div className="flex gap-2">
+                    <div className="relative shrink-0">
+                      <select
+                        name="countryCode"
+                        value={formData.countryCode}
+                        onChange={handleChange}
+                        className={`w-[100px] px-2 py-3 border rounded-md text-sm outline-none transition-all focus:border-[#2C7181] focus:ring-2 focus:ring-[#2C7181]/10 cursor-pointer appearance-none pr-7 ${fieldErrors.countryCode ? 'border-[#dc2626]' : 'border-[#d1d5db]'}`}
+                        style={{ backgroundColor: '#ffffff', color: '#0f172a', colorScheme: 'light' }}
+                      >
+                        {COUNTRY_CODES.map((cc) => (
+                          <option key={`${cc.country}-${cc.code}`} value={cc.code} style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>
+                            {cc.label}
+                          </option>
+                        ))}
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1.5">
+                        <svg className="h-3.5 w-3.5 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="(555) 123-4567"
-                      className={`w-full px-4 py-3 border rounded-md text-sm outline-none transition-all focus:border-[#2C7181] focus:ring-2 focus:ring-[#2C7181]/10 ${fieldErrors.phone ? 'border-[#dc2626]' : 'border-[#d1d5db]'}`}
+                      className={`flex-1 min-w-0 px-4 py-3 border rounded-md text-sm outline-none transition-all focus:border-[#2C7181] focus:ring-2 focus:ring-[#2C7181]/10 ${fieldErrors.phone ? 'border-[#dc2626]' : 'border-[#d1d5db]'}`}
                       style={{ backgroundColor: '#ffffff', color: '#2C7181' }}
                     />
-                    {fieldErrors.phone && <p className="text-[#dc2626] text-xs mt-1">{fieldErrors.phone}</p>}
                   </div>
+                  {(fieldErrors.phone || fieldErrors.countryCode) && (
+                    <p className="text-[#dc2626] text-xs mt-1">{fieldErrors.phone || fieldErrors.countryCode}</p>
+                  )}
+                </div>
 
-                  <div>
-                    <label className="block text-[#2C7181] text-sm font-medium mb-1.5">
-                      Team Size
-                    </label>
-                    <div className="relative">
-                      <select
-                        name="companySize"
-                        value={formData.companySize}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-[#d1d5db] rounded-md text-sm outline-none transition-all focus:border-[#2C7181] focus:ring-2 focus:ring-[#2C7181]/10 cursor-pointer appearance-none pr-10"
-                        style={{ backgroundColor: '#ffffff', color: '#0f172a', colorScheme: 'light' }}
-                      >
-                        <option value="" style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>Select</option>
-                        <option value="1-10" style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>1-10</option>
-                        <option value="11-50" style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>11-50</option>
-                        <option value="51-200" style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>51-200</option>
-                        <option value="200+" style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>200+</option>
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                        <svg className="h-4 w-4 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
+                <div>
+                  <label className="block text-[#2C7181] text-sm font-medium mb-1.5">
+                    Team Size
+                  </label>
+                  <div className="relative">
+                    <select
+                      name="companySize"
+                      value={formData.companySize}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-[#d1d5db] rounded-md text-sm outline-none transition-all focus:border-[#2C7181] focus:ring-2 focus:ring-[#2C7181]/10 cursor-pointer appearance-none pr-10"
+                      style={{ backgroundColor: '#ffffff', color: '#0f172a', colorScheme: 'light' }}
+                    >
+                      <option value="" style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>Select</option>
+                      <option value="1-10" style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>1-10</option>
+                      <option value="11-50" style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>11-50</option>
+                      <option value="51-200" style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>51-200</option>
+                      <option value="200+" style={{ backgroundColor: '#ffffff', color: '#0f172a' }}>200+</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                      <svg className="h-4 w-4 text-[#64748b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
                     </div>
                   </div>
                 </div>
