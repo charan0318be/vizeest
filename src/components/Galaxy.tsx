@@ -261,7 +261,8 @@ let program: Program | null = null;
     });
 
     const mesh = new Mesh(gl, { geometry, program });
-    let animateId;
+    let animateId: number;
+
 
     function update(t) {
       animateId = requestAnimationFrame(update);
