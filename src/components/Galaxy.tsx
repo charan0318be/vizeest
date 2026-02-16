@@ -261,29 +261,28 @@ let program: Program | null = null;
     });
 
     const mesh = new Mesh(gl, { geometry, program });
-    let animateId: number;
+let animateId: number;
 
+function update(t: number) {
+  animateId = requestAnimationFrame(update);
+  if (!disableAnimation) {
+    program.uniforms.uTime.value = t * 0.001;
+    program.uniforms.uStarSpeed.value = (t * 0.001 * starSpeed) / 10.0;
+  }
 
-    function update(t: number) {
- {
-      animateId = requestAnimationFrame(update);
-      if (!disableAnimation) {
-        program.uniforms.uTime.value = t * 0.001;
-        program.uniforms.uStarSpeed.value = (t * 0.001 * starSpeed) / 10.0;
-      }
+  const lerpFactor = 0.05;
+  smoothMousePos.current.x += (targetMousePos.current.x - smoothMousePos.current.x) * lerpFactor;
+  smoothMousePos.current.y += (targetMousePos.current.y - smoothMousePos.current.y) * lerpFactor;
 
-      const lerpFactor = 0.05;
-      smoothMousePos.current.x += (targetMousePos.current.x - smoothMousePos.current.x) * lerpFactor;
-      smoothMousePos.current.y += (targetMousePos.current.y - smoothMousePos.current.y) * lerpFactor;
+  smoothMouseActive.current += (targetMouseActive.current - smoothMouseActive.current) * lerpFactor;
 
-      smoothMouseActive.current += (targetMouseActive.current - smoothMouseActive.current) * lerpFactor;
+  program.uniforms.uMouse.value[0] = smoothMousePos.current.x;
+  program.uniforms.uMouse.value[1] = smoothMousePos.current.y;
+  program.uniforms.uMouseActiveFactor.value = smoothMouseActive.current;
 
-      program.uniforms.uMouse.value[0] = smoothMousePos.current.x;
-      program.uniforms.uMouse.value[1] = smoothMousePos.current.y;
-      program.uniforms.uMouseActiveFactor.value = smoothMouseActive.current;
+  renderer.render({ scene: mesh });
+}
 
-      renderer.render({ scene: mesh });
-    }
     animateId = requestAnimationFrame(update);
     ctn.appendChild(gl.canvas);
 
