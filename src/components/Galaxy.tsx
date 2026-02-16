@@ -216,6 +216,7 @@ let program: WebGLProgram | null = null;
 
     function resize() {
       const scale = 1;
+       if (!ctn) return;
       renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
       if (program) {
         program.uniforms.uResolution.value = new Color(
