@@ -390,7 +390,7 @@ export default function PricingPage() {
         </section>
 
       </main>
-      <Footer />
+     
     </>
   );
 }

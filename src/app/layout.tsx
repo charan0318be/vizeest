@@ -7,6 +7,8 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Contentsquare from '@/components/Contentsquare';
 import VizeestTracking from '@/components/VizeestTracking';
 import './globals.css';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
 
 const inter = Inter({
   variable: '--font-geist-sans',
@@ -305,11 +307,23 @@ export default function RootLayout({
         <Contentsquare />
         <VizeestTracking />
         <ThemeProvider>
-          <DemoModalProvider>
-            {children}
-            <DemoModal />
-          </DemoModalProvider>
-        </ThemeProvider>
+  <DemoModalProvider>
+
+    {/* GLOBAL NAVBAR */}
+    <Header />
+
+    {/* PAGE CONTENT */}
+    <main className="pt-20">
+      {children}
+    </main>
+
+    {/* GLOBAL FOOTER */}
+    <Footer />
+
+    <DemoModal />
+  </DemoModalProvider>
+</ThemeProvider>
+
       </body>
     </html>
   );

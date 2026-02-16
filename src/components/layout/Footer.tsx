@@ -20,7 +20,15 @@ const footerLinks = {
   company: [
     { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Careers', href: '/careers' },
   ],
+  Resources:[
+    { name: 'Blog / Insights', href: '/blog' },
+    { name: 'Steel Estimation Guides', href: '/guides' },
+    { name: 'Case Studies', href: '/case-studies' },
+    { name: 'Product Updates', href: '/updates' },
+    { name: 'Help & Documentation', href: '/help' },
+  ]
 };
 
 export default function Footer() {
@@ -60,7 +68,7 @@ export default function Footer() {
 
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
           {/* Brand Column */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
@@ -180,8 +188,25 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+                    <div>
+            <h4 className="font-semibold text-white mb-4">Resources</h4>
+            <ul className="space-y-3">
+              {footerLinks.Resources.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-[#9CA3AF] hover:text-[#4EBABD] transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
+
+      
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">

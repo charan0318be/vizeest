@@ -1433,6 +1433,51 @@ input:focus, textarea:focus, select:focus {
   }
 }
 
+
+
+@keyframes scan {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  50% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes pulseBox {
+  0%,100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes drawLine {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-scan {
+  animation: scan 4s linear infinite;
+}
+
+.animate-box {
+  animation: pulseBox 2.5s ease-in-out infinite;
+}
+
+.animate-dot {
+  animation: pulseDot 1.8s ease-out infinite;
+}
+
+.animate-line {
+  animation: drawLine 1.5s ease-out forwards;
+}
+
+.animate-beam {
+  animation: drawLine 1.5s ease-out forwards;
+}
+
+
 @keyframes floatMedium {
   0%, 100% {
     transform: translate3d(0, 0, 0) rotate(0deg);
