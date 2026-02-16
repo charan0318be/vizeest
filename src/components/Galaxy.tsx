@@ -264,7 +264,8 @@ let program: Program | null = null;
     let animateId: number;
 
 
-    function update(t) {
+    function update(t: number) {
+ {
       animateId = requestAnimationFrame(update);
       if (!disableAnimation) {
         program.uniforms.uTime.value = t * 0.001;
