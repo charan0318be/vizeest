@@ -47,7 +47,7 @@ export default function FeatureComparisonPage() {
               </div>
             ))}
 
-            {[
+            {([
               ['Beam Detection', true, true, true],
               ['Automated Take-Off', true, true, true],
               ['Manual Review Workflow', false, true, true],
@@ -55,7 +55,7 @@ export default function FeatureComparisonPage() {
               ['SSO & Identity', false, true, true],
               ['Custom Integrations', false, false, true],
               ['Dedicated Support', false, true, true],
-            ].map(([feature, starter, enterprise, custom]) => (
+            ] as const).map(([feature, starter, enterprise, custom]) => (
               <div key={feature} className="contents group">
 
                 {/* FEATURE */}
