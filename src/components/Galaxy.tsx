@@ -210,7 +210,8 @@ export default function Galaxy({
     } else {
       gl.clearColor(0, 0, 0, 1);
     }
-let program: WebGLProgram | null = null;
+let program: Program | null = null;
+
 
 
 
