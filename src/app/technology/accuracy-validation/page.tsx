@@ -100,7 +100,8 @@ export default function AccuracyValidationPage() {
   
 <Squares
   speed={1.5}
-  size={40}
+  squareSize={40}
+
   direction="diagonal"
   
 />
