@@ -3,18 +3,30 @@
 import { useRef, useEffect } from 'react';
 
 class Grad {
-  constructor(x, y, z) {
+  x: number;
+  y: number;
+  z: number;
+
+  constructor(x: number, y: number, z: number) {
+
     this.x = x;
     this.y = y;
     this.z = z;
   }
-  dot2(x, y) {
+    dot2(x: number, y: number) {
+
     return this.x * x + this.y * y;
   }
 }
 
 class Noise {
-  constructor(seed = 0) {
+  grad3: Grad[];
+  p: number[];
+  perm: number[];
+  gradP: Grad[];
+
+  constructor(seed: number = 0) {
+
     this.grad3 = [
       new Grad(1, 1, 0), new Grad(-1, 1, 0),
       new Grad(1, -1, 0), new Grad(-1, -1, 0),
@@ -38,7 +50,8 @@ class Noise {
     this.gradP = new Array(512);
     this.seed(seed);
   }
-  seed(seed) {
+    seed(seed: number) {
+
     if (seed > 0 && seed < 1) seed *= 65536;
     seed = Math.floor(seed);
     if (seed < 256) seed |= seed << 8;
@@ -48,9 +61,9 @@ class Noise {
       this.gradP[i] = this.gradP[i + 256] = this.grad3[v % 12];
     }
   }
-  fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
-  lerp(a, b, t) { return (1 - t) * a + t * b; }
-  perlin2(x, y) {
+  fade(t: number) { return t * t * t * (t * (t * 6 - 15) + 10); }
+ lerp(a: number, b: number, t: number)  { return (1 - t) * a + t * b; }
+  perlin2(x: number, y: number) {
     let X = Math.floor(x), Y = Math.floor(y);
     x -= X; y -= Y; X &= 255; Y &= 255;
     const n00 = this.gradP[X + this.perm[Y]].dot2(x, y);
@@ -60,6 +73,21 @@ class Noise {
     return this.lerp(this.lerp(n00, n10, this.fade(x)), this.lerp(n01, n11, this.fade(x)), this.fade(y));
   }
 }
+type WavesProps = {
+  lineColor?: string;
+  backgroundColor?: string;
+  waveSpeedX?: number;
+  waveSpeedY?: number;
+  waveAmpX?: number;
+  waveAmpY?: number;
+  xGap?: number;
+  yGap?: number;
+  friction?: number;
+  tension?: number;
+  maxCursorMove?: number;
+  className?: string;
+};
+
 
 const Waves = ({
   lineColor = '#4EBABD',
@@ -74,18 +102,20 @@ const Waves = ({
   tension = 0.005,
   maxCursorMove = 100,
   className = ''
-}) => {
-  const containerRef = useRef(null);
-  const canvasRef = useRef(null);
-  const ctxRef = useRef(null);
+}: WavesProps) =>  {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const noiseRef = useRef(new Noise(Math.random()));
-  const frameRef = useRef(null);
+  const frameRef = useRef<number | null>(null);
   const mouse = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const container = containerRef.current;
+    if (!canvas || !container) return;
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
     ctxRef.current = ctx;
 
     const resize = () => {
@@ -96,7 +126,8 @@ const Waves = ({
     resize();
     window.addEventListener('resize', resize);
 
-    const draw = time => {
+    const draw = (time: number) => {
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.strokeStyle = lineColor;
       for (let x = 0; x < canvas.width; x += xGap) {
@@ -117,7 +148,10 @@ const Waves = ({
 
     frameRef.current = requestAnimationFrame(draw);
     return () => {
-      cancelAnimationFrame(frameRef.current);
+      if (frameRef.current !== null) {
+  cancelAnimationFrame(frameRef.current);
+}
+
       window.removeEventListener('resize', resize);
     };
   }, []);
