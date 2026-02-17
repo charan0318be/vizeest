@@ -256,7 +256,8 @@ export default function Header() {
             <ul className="py-1">
   {item.children.map((child) => {
     // SIMPLE LINK (Overview)
-    if (!child.children) {
+   if (!('children' in child)) {
+
       return (
         <li key={child.name}>
           <Link
