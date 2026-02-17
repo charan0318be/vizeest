@@ -123,7 +123,10 @@ const requestRef = useRef<number | null>(null);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(requestRef.current);
+      if (requestRef.current !== null) {
+  cancelAnimationFrame(requestRef.current);
+}
+
       canvas.removeEventListener('mousemove', handleMouseMove);
       canvas.removeEventListener('mouseleave', handleMouseLeave);
     };
