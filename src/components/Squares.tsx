@@ -98,7 +98,8 @@ const requestRef = useRef<number | null>(null);
       requestRef.current = requestAnimationFrame(updateAnimation);
     };
 
-    const handleMouseMove = event => {
+   const handleMouseMove = (event: MouseEvent) => {
+
       const rect = canvas.getBoundingClientRect();
       const mouseX = event.clientX - rect.left;
       const mouseY = event.clientY - rect.top;
