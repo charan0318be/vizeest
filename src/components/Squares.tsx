@@ -9,12 +9,12 @@ const Squares = ({
   squareSize = 40,
   hoverFillColor = '#222'
 }) => {
-  const canvasRef = useRef(null);
-  const requestRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+const requestRef = useRef<number | null>(null);
   const numSquaresX = useRef(0);
   const numSquaresY = useRef(0);
   const gridOffset = useRef({ x: 0, y: 0 });
-  const hoveredSquareRef = useRef(null);
+  const hoveredSquareRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
