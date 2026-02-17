@@ -170,10 +170,9 @@ const navigation = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const { theme } = useTheme();
-  const [openSubMenu, setOpenSubMenu] = useState(null);
-
+  const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const { openModal } = useDemoModal();
 
   useEffect(() => {
