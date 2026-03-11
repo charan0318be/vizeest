@@ -50,7 +50,7 @@ export default function Header() {
               alt="VizeEST"
               width={120}
               height={40}
-              className="h-7 w-auto transition-opacity group-hover:opacity-80"
+              className="h-9 w-auto transition-opacity group-hover:opacity-80"
               priority
             />
             <span
