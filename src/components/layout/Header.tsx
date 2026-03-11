@@ -46,7 +46,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <Image
-              src={isScrolled && theme === 'light' ? '/logo.svg' : '/VIZE EST (1).png'}
+              src={isScrolled && theme === 'light' ? '/logo.svg' : '/Untitled .png'}
               alt="VizeEST"
               width={120}
               height={40}
