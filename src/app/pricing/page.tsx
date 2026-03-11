@@ -133,7 +133,7 @@ export default function PricingPage() {
               className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-8"
             >
 
-              {pricing[year].map((tier,index)=>(
+              {pricing[year as keyof typeof pricing].map((tier,index)=>(
                 <motion.div
                   variants={item}
                   whileHover={{ scale:1.05 }}
