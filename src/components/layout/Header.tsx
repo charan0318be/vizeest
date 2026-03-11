@@ -7,9 +7,10 @@ import { useTheme } from '@/context/ThemeContext';
 import { useDemoModal } from '@/context/DemoModalContext';
 
 const navigation = [
-  { name: 'Features', href: '/features' },
+  { name: 'Estimation', href: '/features' },
   { name: 'Solutions', href: '/solutions' },
-  { name: 'Enterprise', href: '/enterprise' },
+  { name: 'Technology', href: '/enterprise' },
+  { name: 'Fabricators', href: '/fabricators' },
   { name: 'Pricing', href: '/pricing' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
@@ -45,11 +46,11 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <Image
-              src={isScrolled && theme === 'light' ? '/logo.svg' : '/logo-white.svg'}
+              src={isScrolled && theme === 'light' ? '/logo.svg' : '/VIZE EST (1).png'}
               alt="VizeEST"
-              width={48}
-              height={48}
-              className="h-12 w-12 transition-opacity group-hover:opacity-80"
+              width={120}
+              height={40}
+              className="h-7 w-auto transition-opacity group-hover:opacity-80"
               priority
             />
             <span
@@ -61,7 +62,7 @@ export default function Header() {
                   : 'text-white'
               }`}
             >
-              Vize<span className="gradient-text">EST</span>
+              {/* Vize<span className="gradient-text">Est</span> */}
             </span>
           </Link>
 

@@ -26,12 +26,12 @@ export default function Home() {
         <CollaborationInsights />
         <EnterpriseOutputs />
         <FeaturesGlimpse />
-        <SolutionsGlimpse />
-        <ForTeams />
-        <EnterpriseGlimpse />
-        <QualityControl />
-        <WhyChoose />
-        <PricingGlimpse />
+        {/* <SolutionsGlimpse /> */}
+        {/* <ForTeams /> */}
+        {/* <EnterpriseGlimpse /> */}
+        {/* <QualityControl /> */}
+        {/* <WhyChoose />
+        <PricingGlimpse /> */}
       </main>
       <Footer />
     </>

@@ -6,6 +6,7 @@ import DemoModal from '@/components/DemoModal';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Contentsquare from '@/components/Contentsquare';
 import VizeestTracking from '@/components/VizeestTracking';
+// import { ParticleNetwork } from '@/components/ui/ParticleNetwork';
 import './globals.css';
 
 const inter = Inter({
@@ -35,11 +36,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://vizeest.com'),
   title: {
-    default: 'VizeEST | Structural Steel Estimation Platform',
-    template: '%s | VizeEST',
-  },
-  description:
-    'VizeEST delivers intelligent beam detection, automated material take-offs, and enterprise-grade reporting for structural steel estimation. Reduce estimation time by 80% while improving accuracy to 98%+. Trusted by 500+ enterprises worldwide.',
+  default: 'Structural Steel Estimating Software | Bluebeam Steel Takeoff Software - VizeEST',
+  template: '%s | VizeEST',
+},
+ description:
+  'VizeEST helps steel fabricators manage projects with steel estimation workflows, while teams improve bid accuracy in steel fabrication using simple, reliable tools today.',
   keywords: [
     'structural steel estimation',
     'beam detection software',
@@ -93,9 +94,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://vizeest.com',
     siteName: 'VizeEST',
-    title: 'VizeEST | Structural Steel Estimation Platform',
+     title: 'Structural Steel Estimating Software | Bluebeam Steel Takeoff Software - VizeEST',
     description:
-      'Transform your steel estimation workflow. Reduce estimation time by 80% with 98%+ accuracy. Trusted by 500+ enterprise teams.',
+     'VizeEST helps steel fabricators manage projects with steel estimation workflows, while teams improve bid accuracy in steel fabrication using simple, reliable tools today.',
     images: [
       {
         url: '/og-image.png',
@@ -117,9 +118,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@vizeest',
     creator: '@vizeest',
-    title: 'VizeEST | Structural Steel Estimation',
+   title: 'Structural Steel Estimating Software | Bluebeam Steel Takeoff Software - VizeEST',
     description:
-      'Transform your steel estimation workflow. Reduce time by 80% with 98%+ accuracy.',
+      'VizeEST helps steel fabricators manage projects with steel estimation workflows and improve bid accuracy using simple, reliable tools.',
     images: {
       url: '/og-image.png',
       alt: 'VizeEST - Enterprise Steel Estimation Platform',
@@ -182,7 +183,8 @@ const jsonLd = {
       '@id': 'https://vizeest.com/#website',
       url: 'https://vizeest.com',
       name: 'VizeEST',
-      description: 'Structural Steel Estimation Platform',
+      description:
+  'VizeEST helps steel fabricators manage projects with steel estimation workflows and improve bid accuracy using simple, reliable tools.',
       publisher: {
         '@id': 'https://vizeest.com/#organization',
       },
@@ -301,6 +303,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
+        {/* <ParticleNetwork
+    particleCount={55}
+    maxDistance={160}
+    speed={0.4}
+    className="fixed inset-0 z-0 pointer-events-none"
+  /> */}
         <GoogleAnalytics />
         <Contentsquare />
         <VizeestTracking />

@@ -37,7 +37,7 @@ export default function Footer() {
                 Ready to Transform Your Estimation Process?
               </h3>
               <p className="text-white/80 text-lg">
-                Join leading steel fabricators using VizeEST to save time and win more bids.
+                Join leading steel fabricators using VizeEst to save time and win more bids.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -72,7 +72,7 @@ export default function Footer() {
                 className="h-12 w-12"
               />
               <span className="text-3xl font-bold text-white">
-                Vize<span className="gradient-text">EST</span>
+                Vize<span className="gradient-text">Est</span>
               </span>
             </Link>
             <p className="text-[#9CA3AF] mb-6 max-w-xs">
@@ -188,7 +188,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-[#9CA3AF] text-sm">
-              © {new Date().getFullYear()} VizeEST. All rights reserved.
+              © {new Date().getFullYear()} VizeEst. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center gap-6">
               <Link

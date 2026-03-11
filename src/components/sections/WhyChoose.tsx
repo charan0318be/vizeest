@@ -135,8 +135,8 @@ export default function WhyChoose() {
           ))}
         </div>
 
-        {/* Testimonials */}
-        <div
+     
+        {/* <div
           ref={testimonialsRef}
           className={`rounded-2xl p-8 md:p-12 border scroll-scale-up ${testimonialsVisible ? 'animate-in' : ''} ${
             theme === 'dark'
@@ -181,7 +181,7 @@ export default function WhyChoose() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
       </div>
     </section>
