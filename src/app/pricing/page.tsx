@@ -28,7 +28,7 @@ const pricing = {
 
 export default function PricingPage() {
 
-  const [year, setYear] = useState("year1");
+  const [year, setYear] = useState<"year1" | "year2" | "year3">("year1");
 
   const container = {
     hidden: { opacity: 0 },
