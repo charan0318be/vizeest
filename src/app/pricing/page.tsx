@@ -90,7 +90,7 @@ export default function PricingPage() {
           >
             <div className="flex justify-center gap-4">
 
-              {["year1","year2","year3"].map((y,i)=>(
+              {(["year1","year2","year3"] as const).map((y,i)=>(
                 <motion.button
                   whileTap={{ scale:0.9 }}
                   whileHover={{ scale:1.05 }}
