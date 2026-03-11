@@ -42,7 +42,7 @@ export default function PricingPage() {
 
   const [year, setYear] = useState<keyof PricingType>("year1");
 
-  const currentPricing = pricing[year];
+  const currentPricing = pricing[year as keyof PricingType];
 
   const container = {
     hidden: { opacity: 0 },
