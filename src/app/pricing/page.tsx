@@ -40,7 +40,9 @@ const pricing: PricingType = {
 
 export default function PricingPage() {
 
-  const [year, setYear] = useState<"year1" | "year2" | "year3">("year1");
+  const [year, setYear] = useState<keyof PricingType>("year1");
+
+  const currentPricing = pricing[year];
 
   const container = {
     hidden: { opacity: 0 },
@@ -94,33 +96,32 @@ export default function PricingPage() {
 
 
           {/* Year Toggle */}
-          {/* Year Toggle */}
-<motion.section
-  initial={{ opacity:0 }}
-  animate={{ opacity:1 }}
-  transition={{ delay:0.2 }}
-  className="pb-10"
->
-  <div className="flex justify-center gap-4">
+          <motion.section
+            initial={{ opacity:0 }}
+            animate={{ opacity:1 }}
+            transition={{ delay:0.2 }}
+            className="pb-10"
+          >
+            <div className="flex justify-center gap-4">
 
-    {(["year1","year2","year3"] as const).map((y,i)=>(
-      <motion.button
-        whileTap={{ scale:0.9 }}
-        whileHover={{ scale:1.05 }}
-        key={y}
-        onClick={()=>setYear(y)}
-        className={`px-6 py-2 rounded-full border transition-all duration-300
-        
-        ${year===y
-          ? "bg-[#4EBABD] text-black border-[#4EBABD]"
-          : "border-white/20 text-white/70 hover:border-[#4EBABD]"}`}
-      >
-        Year {i+1}
-      </motion.button>
-    ))}
+              {(["year1","year2","year3"] as const).map((y,i)=>(
+                <motion.button
+                  whileTap={{ scale:0.9 }}
+                  whileHover={{ scale:1.05 }}
+                  key={y}
+                  onClick={()=>setYear(y)}
+                  className={`px-6 py-2 rounded-full border transition-all duration-300
+                  
+                  ${year===y
+                    ? "bg-[#4EBABD] text-black border-[#4EBABD]"
+                    : "border-white/20 text-white/70 hover:border-[#4EBABD]"}`}
+                >
+                  Year {i+1}
+                </motion.button>
+              ))}
 
-  </div>
-</motion.section>
+            </div>
+          </motion.section>
 
 
           {/* Pricing Cards */}
@@ -133,7 +134,7 @@ export default function PricingPage() {
               className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-8"
             >
 
-              {pricing[year as keyof typeof pricing].map((tier,index)=>(
+              {currentPricing.map((tier,index)=>(
                 <motion.div
                   variants={item}
                   whileHover={{ scale:1.05 }}
