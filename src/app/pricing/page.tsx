@@ -5,7 +5,19 @@ import { motion } from "framer-motion";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
-const pricing = {
+type Tier = {
+  name: string;
+  price: string;
+  note: string;
+};
+
+type PricingType = {
+  year1: Tier[];
+  year2: Tier[];
+  year3: Tier[];
+};
+
+const pricing: PricingType = {
   year1: [
     { name: "Founding Partners", price: "Closed", note: "Program completed" },
     { name: "Accelerators", price: "$1,200", note: "Early-stage adoption program" },
