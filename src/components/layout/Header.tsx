@@ -11,7 +11,7 @@ const navigation = [
   { name: 'Solutions', href: '/solutions' },
   { name: 'Technology', href: '/enterprise' },
   { name: 'Fabricators', href: '/fabricators' },
-  { name: 'Pricing', href: '/pricing' },
+  // { name: 'Pricing', href: '/pricing' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];
