@@ -8,6 +8,8 @@ import Contentsquare from '@/components/Contentsquare';
 import VizeestTracking from '@/components/VizeestTracking';
 // import { ParticleNetwork } from '@/components/ui/ParticleNetwork';
 import './globals.css';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 const inter = Inter({
   variable: '--font-geist-sans',
@@ -300,9 +302,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
-      >
+      <body className={`${inter.className} ${jetbrainsMono.variable} antialiased`}>
         {/* <ParticleNetwork
     particleCount={55}
     maxDistance={160}
@@ -313,11 +313,18 @@ export default function RootLayout({
         <Contentsquare />
         <VizeestTracking />
         <ThemeProvider>
-          <DemoModalProvider>
-            {children}
-            <DemoModal />
-          </DemoModalProvider>
-        </ThemeProvider>
+  <DemoModalProvider>
+
+    <Header />   {/* ✅ ADD THIS */}
+
+    <main className="pt-20">  {/* ✅ prevents overlap */}
+      {children}
+    </main>
+          <Footer />   
+  
+    
+  </DemoModalProvider>
+</ThemeProvider>
       </body>
     </html>
   );

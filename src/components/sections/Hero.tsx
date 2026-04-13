@@ -30,41 +30,40 @@ export default function Hero() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-0">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-screen lg:min-h-0 lg:py-24">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-30 lg:py-5">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 item-start min-h-screen lg:min-h-0 lg:py-24">
 
           {/* Left - Text Content */}
-          <div className="text-center lg:text-left pt-20 lg:pt-0">
+         <div className="text-center lg:text-left">
             {/* Badge */}
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] mb-6 hover:bg-white/[0.05] hover:border-[#4EBABD]/30 transition-all group animate-fade-in"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0d242e] border border-white/[0.08] mb-6 hover:bg-white/[0.05] hover:border-[#4EBABD]/30 transition-all group animate-fade-in"
             >
-              <span className="relative flex h-2 w-2">
+              {/* <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4EBABD] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4EBABD]"></span>
-              </span>
-              <span className="text-xs text-white/70 font-medium">Founder Accelerator Program</span>
-              <span className="px-2 py-0.5 text-[10px] bg-gradient-to-r from-[#4EBABD] to-[#2C7181] text-white rounded-full font-bold">75% OFF</span>
-              <svg className="w-3 h-3 text-white/40 group-hover:text-[#4EBABD] group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              </span> */}
+              <span className="text-xs text-[#cffbff]   font-medium uppercase tracking-widest tracking-[0.15em] [word-spacing:3px]">Built for steel fabricators who want faster takeoffs with stronger estimator confidence</span>
+              {/* <span className="px-2 py-0.5 text-[10px] bg-gradient-to-r from-[#4EBABD] to-[#2C7181] text-white rounded-full font-bold">75% OFF</span> */}
+              {/* <svg className="w-3 h-3 text-white/40 group-hover:text-[#4EBABD] group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              </svg> */}
             </Link>
 
             {/* Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-[1.1] animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              <span className="bg-gradient-to-r from-[#4EBABD] via-[#5CC8CB] to-[#2C7181] bg-clip-text text-transparent">
-              Stop Estimating 
+            <h1 className="text-2xl sm:text-2xl lg:text-3xl xl:text-6xl font-bold text-white mb-6 leading-[1.1] animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              <span className="bg-white bg-clip-text text-transparent">
+               Faster takeoffs aren’t enough. You need accuracy you can trust — with the estimator still in charge.
               </span>
-              <br />
-              Blind.
+              
             </h1>
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg text-white/50 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-             The first visual-centric estimation platform built for steel fabricators.
+             VizeEst is an estimator sidekick built to help fabricators move faster
               <br />
-              <span className="text-white/70">Review drawings in 2D while visualizing the structure in 3D on a second screen — helping estimators verify scope faster and quote with confidence.
+              <span className="text-white/70">with better accuracy. It gives estimators a clearer way to verify what they are seeing, reduce manual errors, and work with more confidence at every stage. Whether it is a new estimator or a senior one, the platform is there to support judgment, not take it away.
 </span>
             </p>
 
@@ -72,25 +71,32 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-10 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <button
                 
-                className="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-[#4EBABD] to-[#2C7181] text-white font-medium rounded-xl hover:shadow-[0_0_30px_rgba(78,186,189,0.3)] transition-all duration-300 flex items-center justify-center gap-2 group"
+                className="w-full sm:w-auto px-6 py-3.5 bg-white text-black font-medium rounded-4xl hover:shadow-[0_0_30px_rgba(78,186,189,0.3)] transition-all duration-300 flex items-center justify-center gap-2 group"
               >
-                 See How It Works
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                Get Started Free
+                {/* <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                </svg> */}
               </button>
               <button
                
-                className="w-full sm:w-auto px-6 py-3.5 bg-white/[0.03] border border-white/10 text-white font-medium rounded-xl hover:bg-white/[0.06] hover:border-white/20 transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3.5 bg-white/[0.03] border border-white/10 text-white font-medium rounded-4xl hover:bg-white/[0.06] hover:border-white/20 transition-all flex items-center justify-center gap-2"
+              >
+                
+                Book Demo
+              </button>
+              <button
+               
+                className="w-full sm:w-auto px-6 py-3.5 bg-white/[0.03] border border-white/10 text-white font-medium rounded-4xl hover:bg-white/[0.06] hover:border-white/20 transition-all flex items-center justify-center gap-2"
               >
                 <svg className="w-4 h-4 text-[#4EBABD]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Request Demo
+                Watch Product Tour
               </button>
             </div>
-
+           
             {/* Stats Row */}
             {/* <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 sm:gap-10 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               {[
@@ -108,81 +114,67 @@ export default function Hero() {
 
           {/* Right - Dashboard Mockup */}
          {/* Right - Split Screen Visual */}
-<div className="relative animate-fade-in-up hidden lg:block" style={{ animationDelay: '0.3s' }}>
+{/* Right - Visual Placeholder Style */}
+<div className="hidden lg:block animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
 
-  {/* Glow behind visual */}
-  <div className="absolute inset-0 bg-gradient-to-r from-[#4EBABD]/10 to-[#2C7181]/10 blur-[60px] rounded-3xl" />
+  <div className="relative bg-[#102130] border border-white/[0.08] rounded-3xl p-4 shadow-2xl">
 
-  {/* Main Card */}
-  <div className="relative bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl">
+    {/* Outer dashed border */}
+    <div className="border border-dashed bg-[#172636] border-white/10 rounded-2xl p-6">
 
-    {/* Browser Header */}
-    <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.05] bg-white/[0.02]">
-      <div className="flex gap-1.5">
-        <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-        <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-        <div className="w-3 h-3 rounded-full bg-[#28ca41]" />
-      </div>
+      {/* Top Label */}
+      <p className="text-xs uppercase tracking-widest text-[#91bbc2] mb-4">
+        Visual Placeholder
+      </p>
 
-      <div className="flex-1 mx-4">
-        <div className="bg-white/[0.05] rounded-lg px-3 py-1.5 text-[10px] text-white/30 font-mono text-center">
-          Visual Estimation View
-        </div>
-      </div>
-    </div>
+      {/* Heading */}
+      <h3 className="text-xl font-semibold text-white mb-3">
+        Estimator-first verification workflow
+      </h3>
 
-    {/* Split Screen */}
-    <div className="grid grid-cols-2 gap-0">
+      {/* Description */}
+      <p className="text-sm text-[#a3a8ad] mb-6 leading-relaxed">
+        Show a 2D drawing, extracted steel members, and a 3D verification view side by side.
+        The product should feel practical, trustworthy, and built for real estimators not generic automation demos.
+      </p>
 
-      {/* LEFT — 2D Drawing */}
-      <div className="relative border-r border-white/[0.05] bg-[#0d0d0d] h-[360px] overflow-hidden">
+      {/* Two Boxes */}
+      <div className="grid grid-cols-2 gap-6">
 
-        <div className="absolute top-2 left-3 text-[10px] text-white/40 uppercase tracking-wider">
-          2D Drawing
-        </div>
+        <div className="h-[180px] rounded-2xl bg-white/[0.03] border border-white/10" />
 
-        <img
-          src="/Frame 2147225239.png"
-          alt="2D Drawing"
-          className="w-full h-full object-cover opacity-90"
-        />
-
-      </div>
-
-      {/* RIGHT — 3D Structure */}
-      <div className="relative bg-[#0d0d0d] h-[360px] overflow-hidden">
-
-        <div className="absolute top-2 left-3 text-[10px] text-white/40 uppercase tracking-wider">
-          3D Structure
-        </div>
-
-        <img
-          src="/Frame 2147225240.png"
-          alt="3D Model"
-          className="w-full h-full object-cover opacity-90"
-        />
+        <div className="h-[180px] rounded-2xl bg-white/[0.03] border border-white/10" />
 
       </div>
 
     </div>
+    
   </div>
+   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-20 gap-6">
 
-  {/* Floating Element */}
-  <div className="absolute -bottom-4 -left-4 bg-[#0a0a0a]/90 backdrop-blur border border-white/[0.08] rounded-xl p-3 shadow-xl animate-float-slow">
-    <div className="flex items-center gap-2">
-      <div className="w-8 h-8 rounded-lg bg-[#10B981]/10 flex items-center justify-center">
-        <svg className="w-4 h-4 text-[#10B981]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-        </svg>
-      </div>
+              {[
+                "Estimator-first workflow",
+                "Visual verification before pricing",
+                "Estimator empowered",
+                "Faster error spotting",
+                "Stronger internal trust",
+                "Built for steel fabricators",
+              ].map((item, index) => (
+                
+                <div
+                  key={index}
+                  className="px-7 py-5 rounded-2xl border border-white/10 
+                            bg-[#131c24] 
+                            text-[#d2d3d4] text--sm
+                            hover:border-[#4EBABD]/40 hover:shadow-lg 
+                            transition-all duration-300"
+                >
+                  {item}
+                </div>
 
-      <div>
-        <div className="text-[10px] text-white/40">Scope Verified</div>
-        <div className="text-xs text-[#10B981] font-medium">Confidence High</div>
-      </div>
-    </div>
-  </div>
+              ))}
 
+            </div>
 </div>
 
           

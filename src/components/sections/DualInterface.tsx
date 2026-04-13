@@ -1,93 +1,125 @@
 'use client';
 
 import { useTheme } from '@/context/ThemeContext';
-import { useScrollAnimationGroup } from '@/hooks/useScrollAnimation';
 
-const steps = [
-  {
-    title: "Upload drawings",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M4 12l1.41-1.41L11 16.17V4h2v12.17l5.59-5.58L20 12" />
-      </svg>
-    )
-  },
-  {
-    title: "Generate structural visualization",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7h18M3 12h18M3 17h18" />
-      </svg>
-    )
-  },
-  {
-    title: "Validate scope visually",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" />
-      </svg>
-    )
-  },
-  {
-    title: "Complete estimation",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 1.567-3 3.5S10.343 15 12 15s3-1.567 3-3.5S13.657 8 12 8z" />
-      </svg>
-    )
-  }
-];
-
-export default function HowItWorks() {
+export default function WhoItHelps() {
   const { theme } = useTheme();
-  const { ref, isVisible, getStaggerClass } = useScrollAnimationGroup(steps.length);
 
   return (
-    <section className={`py-24 ${theme === 'dark' ? 'bg-[#121212]' : 'bg-white'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className={`py-28 ${theme === 'dark' ? 'bg-[#060f17]' : 'bg-white'}`}>
+      <div className="max-w-7xl mx-auto px-4">
 
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-4 ${
-            theme === 'dark' ? 'text-white' : 'text-[#121212]'
-          }`}>
-            How It Works
-          </h2>
+        {/* TOP SECTION */}
+        <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
 
-          <p className={`${theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'}`}>
-            From drawings to complete estimation in four simple steps.
-          </p>
-        </div>
-
-        {/* Steps Grid */}
-        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className={`enterprise-card text-center scroll-fade-up ${
-                isVisible ? getStaggerClass(index) : ''
-              }`}
-            >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-[#4EBABD] to-[#2C7181] flex items-center justify-center text-white">
-                {step.icon}
-              </div>
-
-              <p className={`font-medium ${
-                theme === 'dark' ? 'text-white' : 'text-[#121212]'
-              }`}>
-                {step.title}
-              </p>
+          {/* LEFT */}
+          <div>
+            <div className="mb-6">
+              <span className="px-5 py-2 rounded-full text-xs tracking-widest font-medium border border-[#2c4a57] text-[#9adbea]">
+                WHO IT HELPS
+              </span>
             </div>
-          ))}
 
+            <h2 className="text-4xl md:text-5xl font-semibold leading-tight text-white">
+              Three stakeholders. One shared need.
+              <br />
+              <span className="text-[#9aa4ab]">
+                A takeoff process built around confidence.
+              </span>
+            </h2>
+          </div>
+
+          {/* RIGHT CARDS */}
+          <div className="space-y-8">
+
+            {/* CARD 1 */}
+            <div className="p-8 rounded-3xl border border-[#1b3440] bg-[#101921] hover:shadow-[0_0_25px_rgba(0,150,200,0.06)]">
+              <h3 className="text-xl font-semibold text-white mb-4">
+                For Steel Fabricators
+              </h3>
+              <p className="text-[#9fb0b9] text-[15px] leading-7 mb-6">
+                Give your business a takeoff workflow that improves speed, accuracy,
+                and internal confidence without removing the estimator from the center
+                of the process.
+              </p>
+              <div className="text-[#9adbea] text-sm font-medium cursor-pointer">
+                Explore solution →
+              </div>
+            </div>
+
+            {/* CARD 2 */}
+            <div className="p-8 rounded-3xl border border-[#1b3440] bg-[#101921] hover:shadow-[0_0_25px_rgba(0,150,200,0.06)]">
+              <h3 className="text-xl font-semibold text-white mb-4">
+                For Detailers
+              </h3>
+              <p className="text-[#9fb0b9] text-[15px] leading-7 mb-6">
+                Support detailers with clearer visual understanding, fewer misses,
+                and better coordination with estimators.
+              </p>
+              <div className="text-[#9adbea] text-sm font-medium cursor-pointer">
+                Explore solution →
+              </div>
+            </div>
+
+            <div className="p-8 rounded-3xl border border-[#1b3440] bg-[#101921] hover:shadow-[0_0_25px_rgba(0,150,200,0.06)]">
+              <h3 className="text-xl font-semibold text-white mb-4">
+                For Estimators
+              </h3>
+              <p className="text-[#9fb0b9] text-[15px] leading-7 mb-6">
+                Less guessing.More Visual Confidence.Estimators can work faster and more accurately without giving up control.
+              </p>
+              <div className="text-[#9adbea] text-sm font-medium cursor-pointer">
+                Explore solution →
+              </div>
+            </div>
+
+
+          </div>
         </div>
 
-        {/* Button */}
-        <div className="text-center mt-12">
-          <button className="px-6 py-3 bg-gradient-to-r from-[#4EBABD] to-[#2C7181] text-white font-medium rounded-xl hover:shadow-[0_0_30px_rgba(78,186,189,0.3)] transition-all">
-            See Full Workflow
-          </button>
+        {/* ================= CTA / PRICING BLOCK ================= */}
+        <div className="rounded-[32px] border border-[#1b3440] bg-[#0d1926] p-10 md:p-14 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
+
+          {/* LEFT CONTENT */}
+          <div className="max-w-xl">
+
+            <div className="mb-6">
+              <span className="px-5 py-2 rounded-full text-xs tracking-widest font-medium border border-[#2c4a57] text-[#9adbea]">
+                PRICING
+              </span>
+            </div>
+
+            <h2 className="text-4xl md:text-5xl font-sm text-white leading-tight mb-8">
+              Start with adoption. Scale with usage.
+            </h2>
+
+            {/* BUTTONS */}
+            <div className="flex gap-4">
+
+              <button className="px-6 py-3 rounded-full bg-white text-black font-medium">
+                View Pricing
+              </button>
+
+              <button className="px-6 py-3 rounded-full border border-[#2c4a57] text-white font-medium">
+                Get Started Free
+              </button>
+
+            </div>
+          </div>
+
+          {/* RIGHT PILLS */}
+          <div className="flex flex-col sm:flex-row gap-4">
+
+            <div className="px-6 py-4 rounded-full border border-[#1f3a46] bg-[#18232e] text-[#9fb0b9] text-sm">
+              Pro for teams getting started.
+            </div>
+
+            <div className="px-6 py-4 rounded-full border border-[#1f3a46] bg-[#18232e] text-[#9fb0b9] text-sm">
+              Enterprise for larger rollout.
+            </div>
+
+          </div>
+
         </div>
 
       </div>

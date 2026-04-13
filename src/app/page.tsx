@@ -8,7 +8,7 @@ import CollaborationInsights from '@/components/sections/CollaborationInsights';
 import EnterpriseOutputs from '@/components/sections/EnterpriseOutputs';
 import ForTeams from '@/components/sections/ForTeams';
 import QualityControl from '@/components/sections/QualityControl';
-import FeaturesGlimpse from '@/components/sections/FeaturesGlimpse';
+
 import SolutionsGlimpse from '@/components/sections/SolutionsGlimpse';
 import EnterpriseGlimpse from '@/components/sections/EnterpriseGlimpse';
 import PricingGlimpse from '@/components/sections/PricingGlimpse';
@@ -24,8 +24,8 @@ export default function Home() {
         <PDFMarkup />
         <DualInterface />
         <CollaborationInsights />
-        <EnterpriseOutputs />
-        <FeaturesGlimpse />
+       
+       
         {/* <SolutionsGlimpse /> */}
         {/* <ForTeams /> */}
         {/* <EnterpriseGlimpse /> */}
@@ -33,7 +33,7 @@ export default function Home() {
         {/* <WhyChoose />
         <PricingGlimpse /> */}
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

@@ -1,116 +1,80 @@
 'use client';
 
 import { useTheme } from '@/context/ThemeContext';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
-const benefits = [
-  "Faster drawing interpretation",
-  "Easier internal review",
-  "Reduced oversight risk",
-  "Greater estimator confidence",
+const steps = [
+  {
+    number: "01",
+    title: "Bring in the drawing",
+    desc: "Start with what your team already uses. No need to change how you begin the estimation process.",
+  },
+  {
+    number: "02",
+    title: "See it in 3D",
+    desc: "Understand the building faster. What used to take time to mentally interpret becomes easier to verify.",
+  },
+  {
+    number: "03",
+    title: "Estimate with confidence",
+    desc: "Price with less second-guessing. Fewer pauses, fewer doubts, clearer decisions.",
+  },
+  {
+    number: "04",
+    title: "Move forward stronger",
+    desc: "Cleaner review. Better trust. Easier conversations across the team before the number goes out.",
+  },
 ];
 
-export default function VisualEstimation() {
+export default function HowItWorks() {
   const { theme } = useTheme();
-  const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section
-      className={`py-24 transition-colors ${
-        theme === 'dark' ? 'bg-[#0E0E0E]' : 'bg-[#F9FAFB]'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className={`py-28 ${theme === 'dark' ? 'bg-[#0e171f]' : 'bg-white'}`}>
+      <div className="max-w-7xl mx-auto px-4">
 
-        <div
-          ref={ref}
-          className={`grid lg:grid-cols-2 gap-12 items-center scroll-fade-up ${
-            isVisible ? 'animate-in' : ''
-          }`}
-        >
-
-          {/* LEFT CONTENT */}
-          <div>
-
-            <h2
-              className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${
-                theme === 'dark' ? 'text-white' : 'text-[#121212]'
-              }`}
-            >
-              Visual-Centric
-              <br />
-              <span className="gradient-text">Estimation</span>
-            </h2>
-
-            <p
-              className={`text-lg mb-8 ${
-                theme === 'dark' ? 'text-[#9CA3AF]' : 'text-[#6B7280]'
-              }`}
-            >
-              VizeEst introduces a visual approach to estimation where drawings
-              can be reviewed alongside a generated 3D view. This allows
-              estimators to quickly cross-check elements visually and validate
-              assumptions before submitting a quote.
-            </p>
-
-            {/* Benefits */}
-            <div className="space-y-4 mb-8">
-              {benefits.map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-
-                  <div className="w-6 h-6 rounded-full bg-[#10B981] flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg
-                      className="w-4 h-4 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-
-                  <p
-                    className={`text-lg ${
-                      theme === 'dark' ? 'text-[#E5E7EB]' : 'text-[#374151]'
-                    }`}
-                  >
-                    {item}
-                  </p>
-
-                </div>
-              ))}
-            </div>
-
-            {/* Button */}
-            <button className="px-6 py-3 bg-gradient-to-r from-[#4EBABD] to-[#2C7181] text-white font-medium rounded-xl hover:shadow-[0_0_30px_rgba(78,186,189,0.3)] transition-all">
-              Explore Visual Estimation
-            </button>
-
-          </div>
-
-          {/* RIGHT VISUAL */}
-          <div className="relative">
-
-            <div className="rounded-2xl overflow-hidden border border-[#2D2D2D] bg-[#0a0a0a] shadow-xl">
-              <img
-                src="/visual.jpeg"
-                alt="Visual estimation interface"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#4EBABD]/10 to-[#2C7181]/10 blur-[80px] -z-10"></div>
-
-          </div>
-
+        {/* Tag */}
+        <div className="mb-6">
+          <span className="px-5 py-2 rounded-full text-xs tracking-widest font-semibold border border-[#2c4a57] text-[#9adbea]">
+            HOW IT WORKS
+          </span>
         </div>
 
+        {/* Heading */}
+        <h2 className="text-4xl md:text-5xl font-semibold text-white max-w-4xl mb-16 leading-tight">
+          Upload the drawing. Verify visually. Price with more confidence.
+        </h2>
+
+        {/* Cards */}
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+  {steps.map((item, index) => (
+    <div
+      key={index}
+      className="p-8 rounded-[28px] border border-[#212a33] bg-[#0e1e2b] transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,150,200,0.06)]"
+    >
+
+      {/* Step Number */}
+      <div className="text-[#7fb3c9] text-sm font-medium mb-6">
+        {item.number}
+      </div>
+
+      {/* ONLY ONE Inner Card (Correct) */}
+      <div className="h-36 rounded-2xl bg-[#0e1e2b] border border-[#212a33] mb-8" />
+
+      {/* Title */}
+      <h3 className="text-[20px] font-semibold text-white mb-4">
+        {item.title}
+      </h3>
+
+      {/* Description */}
+      <p className="text-[#b0b4b8] text-[15px] leading-7">
+        {item.desc}
+      </p>
+
+    </div>
+  ))}
+
+</div>
       </div>
     </section>
   );
