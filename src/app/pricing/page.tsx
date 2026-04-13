@@ -214,7 +214,7 @@ export default function PricingSection() {
  <tr className="hover:bg-[#0b2230]/50 transition">
  
   <td
-    rowSpan="4"
+    rowSpan={4}
     className="p-4 border border-[#1b3440] align-top font-semibold text-white"
   >
     Detection Engine
@@ -289,7 +289,7 @@ export default function PricingSection() {
 <tr className="hover:bg-[#0b2230]/50 transition">
  
   <td
-    rowSpan="2"
+    rowSpan={2}
     className="p-4 border border-[#1b3440] align-top font-semibold text-white"
   >
    3D Model						
@@ -326,7 +326,7 @@ export default function PricingSection() {
 <tr className="hover:bg-[#0b2230]/50 transition">
  
   <td
-    rowSpan="6"
+    rowSpan={6}
     className="p-4 border border-[#1b3440] align-top font-semibold text-white"
   >
    Results & Review						
@@ -415,7 +415,7 @@ export default function PricingSection() {
 <tr className="hover:bg-[#0b2230]/50 transition">
  
   <td
-    rowSpan="4"
+    rowSpan={4}
     className="p-4 border border-[#1b3440] align-top font-semibold text-white"
   >
     Canvas Tools						
@@ -477,7 +477,7 @@ export default function PricingSection() {
 <tr className="hover:bg-[#0b2230]/50 transition">
  
   <td
-    rowSpan="7"
+    rowSpan={7}
     className="p-4 border border-[#1b3440] align-top font-semibold text-white"
   >
    Export						
@@ -581,7 +581,7 @@ export default function PricingSection() {
 <tr className="hover:bg-[#0b2230]/50 transition">
  
   <td
-    rowSpan="3"
+    rowSpan={3}
     className="p-4 border border-[#1b3440] align-top font-semibold text-white"
   >
     Productivity						
@@ -632,7 +632,7 @@ Analyse all pages of a multi-page PDF at once
 <tr className="hover:bg-[#0b2230]/50 transition">
  
   <td
-    rowSpan="6"
+    rowSpan={6}
     className="p-4 border  border-[#1b3440] align-top font-semibold text-white"
   >
     Analytics & Admin						
@@ -721,7 +721,7 @@ Analyse all pages of a multi-page PDF at once
 <tr className="hover:bg-[#0b2230]/50 transition">
  
   <td
-    rowSpan="1"
+    rowSpan={1}
     className="p-4 border  border-[#1b3440] align-top font-semibold text-white"
   >
    Collaboration						
@@ -749,7 +749,7 @@ Analyse all pages of a multi-page PDF at once
 <tr className="hover:bg-[#0b2230]/50 transition">
  
   <td
-    rowSpan="6"
+    rowSpan={6}
     className="p-4 border  border-[#1b3440] align-top font-semibold text-white"
   >
    Integration & Branding						
