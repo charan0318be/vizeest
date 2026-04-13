@@ -21,29 +21,61 @@ export default function WhyAndWhatSection() {
     {
       icon: ClipboardCheck,
       title: "Scope Confidence",
-      desc: "Catch missing items,unclear interpretation,andscope doubts earlier before they become bid risk or downstream headaches.",
+      desc: "Catch missing items,unclear interpretation,andscope earlier before they become bid risk or downstream headaches.",
     },
     {
       icon: FileText,
       title: "Quote Readiness",
-      desc: "Reach pricing with stronger internal confidence.The estimators says accountable,but the path to the number becomes clearer.",
+      desc: "Reach pricing with stronger internal confidence.The estimators says accountable. the workflow just helps them with clarity.",
     },
     {
       icon: GitBranch,
       title: "Review Confidence",
-      desc: "Give reviewers and leaders a workflow that is easier to understand,explain, and trust before the quote goes out.",
+      desc: "Give reviewers and leaders workflow that is easier to understand,explained before the quote goes out.",
     },
     {
       icon: Layers,
       title: "Estimator Workflow",
-      desc: "From drawing upload to final confidence.A practicalflow build real etsimation work",
+      desc: "From drawing upload to final confidence.A practicalflow build real estimation workflow,not just a flashy output.",
     },
   ];
 
   return (
+
     <>
+    <div className="w-full bg-[#0e171f] border-t border-b border-[#272f36] ">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 text-center">
+
+    <div className="py-5 px-6 ">
+      <p className="text-[#9fb0b9] text-sm">
+        Built for steel fabrication workflows
+      </p>
+    </div>
+
+    <div className="py-5 px-6  ">
+      <p className="text-[#9fb0b9] text-sm">
+        Reduces takeoff uncertainty
+      </p>
+    </div>
+
+    <div className="py-5 px-6 ">
+      <p className="text-[#9fb0b9] text-sm">
+        Supports human judgment
+      </p>
+    </div>
+
+    <div className="py-5 px-6">
+      <p className="text-[#9fb0b9] text-sm">
+        Made for faster bid readiness
+      </p>
+    </div>
+
+  </div>
+</div>
       {/* ================= WHY THIS MATTERS ================= */}
       <section className={`py-28 ${theme === 'dark' ? 'bg-[#060f17]' : 'bg-white'}`}>
+
+        
         <div className="max-w-7xl mx-auto px-4">
 
           <div className="mb-6">

@@ -9,7 +9,7 @@ export default function Hero() {
   const { openModal } = useDemoModal();
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#030303]">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#060f17]">
       {/* Premium Gradient Background */}
       <div className="absolute inset-0">
         {/* Multi-layer gradient */}
@@ -117,7 +117,7 @@ export default function Hero() {
 {/* Right - Visual Placeholder Style */}
 <div className="hidden lg:block animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
 
-  <div className="relative bg-[#102130] border border-white/[0.08] rounded-3xl p-4 shadow-2xl">
+  <div className="relative bg-[#0e171f] border border-white/[0.08] rounded-3xl p-4 shadow-2xl">
 
     {/* Outer dashed border */}
     <div className="border border-dashed bg-[#172636] border-white/10 rounded-2xl p-6">
