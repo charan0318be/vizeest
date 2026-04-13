@@ -43,8 +43,8 @@ const dropdownMenus = {
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const [mobileDropdown, setMobileDropdown] = useState(null);
+ const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
 
   const { theme } = useTheme();
   const { openModal } = useDemoModal();
@@ -83,7 +83,7 @@ export default function Header() {
           {/* DESKTOP MENU */}
           <div className="hidden md:flex items-center gap-8">
             {navigation.map((item) => {
-              const hasDropdown = dropdownMenus[item.name];
+              const hasDropdown = dropdownMenus[item.name as keyof typeof dropdownMenus];
 
               return (
                 <div
@@ -115,7 +115,7 @@ export default function Header() {
                   {hasDropdown && openDropdown === item.name && (
                     <div className="absolute top-full mt-1 left-0 w-[320px] rounded-3xl border border-[#1b3440] bg-[#061a24] p-4 shadow-xl z-50">
                       
-                      {dropdownMenus[item.name].map((subItem, i) => (
+                      {dropdownMenus[item.name as keyof typeof dropdownMenus].map((subItem, i) => (
                         <div
                           key={i}
                                                     onClick={() => {
@@ -215,7 +215,7 @@ export default function Header() {
             }`}
           >
             {navigation.map((item) => {
-              const hasDropdown = dropdownMenus[item.name];
+              const hasDropdown = dropdownMenus[item.name as keyof typeof dropdownMenus];
 
               return (
                 <div key={item.name} className="mb-2">
@@ -245,7 +245,7 @@ export default function Header() {
 
                   {hasDropdown && mobileDropdown === item.name && (
                     <div className="ml-4 mt-1 space-y-1">
-                      {dropdownMenus[item.name].map((subItem, i) => (
+                      {dropdownMenus[item.name as keyof typeof dropdownMenus].map((subItem, i) => (
                         <div
                           key={i}
                           className={`px-4 py-2 rounded-md text-sm cursor-pointer ${

@@ -28,9 +28,9 @@ const faqs = [
 
 export default function FAQSection() {
   const { theme } = useTheme();
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const toggle = (index) => {
+  const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
