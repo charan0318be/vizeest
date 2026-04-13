@@ -856,7 +856,7 @@ Analyse all pages of a multi-page PDF at once
 <tr className="hover:bg-[#0b2230]/50 transition">
  
   <td
-    rowSpan="4"
+    rowSpan={4}
     className="p-4 border  border-[#1b3440] align-top font-semibold text-white"
   >
    Support						
